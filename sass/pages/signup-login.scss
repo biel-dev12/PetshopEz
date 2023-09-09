@@ -1,0 +1,377 @@
+@import "../outhers/colors.scss";
+@mixin nav-ul {
+  display: flex;
+  list-style: none !important;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  // padding-left: 0;
+}
+@mixin linkEl {
+  text-decoration: none;
+  color: $white-text;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+@mixin btns{
+  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: $white-text;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid $white-text;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.main-content{
+  grid-template-columns: 100%;
+  gap: 0px 0px;
+  grid-template-rows: 8vh 92vh;
+  grid-template-areas:
+    "header"
+    "main"
+}
+#header {
+  width: 100%;
+  grid-area: header;
+  background-color: $white-text;
+  #nav-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: $white-text;
+    height: 100%;
+    gap: 0px!important;
+    padding: 10px 20px!important;
+    a.link-logo {
+      .logo {
+        width: 40%;
+        height: auto;
+      }
+    }
+    .menu-hamb {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      div {
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transition: all 0.3s;
+        &.line1.anim {
+          transform: translateY(11px) rotate(-45deg);
+        }
+        &.line2.anim {
+          transition: all 0.2s;
+          width: 0;
+        }
+        &.line3.anim {
+          transform: translateY(-11px) rotate(45deg);
+          // top: 15px;
+        }
+      }
+    }
+    #nav-list {
+      position: absolute;
+      top: 8vh;
+      right: 0;
+      width: 100vw;
+      height: 92vh;
+      background-color: $secondary-color;
+      transform: translateX(100%);
+      transition: all 0.5s;
+      a.li-option {
+        @include linkEl;
+      }
+      li.li-drop {
+        height: 3rem;
+        span {
+          position: relative;
+          bottom: 31%;
+          height: 100%;
+          @include linkEl;
+        }
+        text-align: center;
+        .dropdown {
+          position: relative;
+          margin-top: 10px;
+          z-index: -1;
+          height: 0;
+          user-select: none;
+          width: 18rem;
+          background-color: $white-text;
+          border-radius: 12px;
+          overflow: hidden;
+          transition: all 0.3s;z
+          &:hover {
+            opacity: 1;
+          }
+          &.show {
+            z-index: 2;
+            height: 11.5rem;
+            box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+          }
+          .item {
+            padding: 10px 10px;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.1);
+              cursor: pointer;
+            }
+          }
+          .item-title {
+            font-size: 23px;
+            color: $primary-color;
+            font-weight: bold;
+            padding-bottom: 5px;
+          }
+          .item-text {
+            color: rgb(71, 71, 71);
+            font-weight: bold;
+          }
+        }
+      }
+      @include nav-ul;
+      gap: 30px;
+      &.show-nav {
+        transition: all 0.5s;
+        transform: translateX(0%);
+      }
+      ul#ul-btns {
+        @include nav-ul;
+        li > button {
+          border: none;
+          width: 7rem;
+          border-radius: 5px;
+          border: 2px solid transparent;
+          padding: 5px 0;
+          font-weight: bold;
+          font-size: 16px;
+          color: $white-text;
+          transition: all 0.5s;
+          cursor: pointer;
+          &.btn-login {
+            background-color: $secondary-color;
+            border-color: $white-text;
+            color: $white-text;
+            &:hover {
+              background-color: $white-text;
+              border: 2px solid $white-text;
+              color: $secondary-color;
+            }
+          }
+          &.btn-signup {
+            background-color: $primary-color;
+            &:hover {
+              background-color: $secondary-color;
+              border: 2px solid $primary-color;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#main-section {
+  width: 100%;
+  grid-area: main;
+  background-color: $terc-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  .bg-pets {
+    display: none;
+  }
+  .form-signup-login {
+    user-select: none;
+    background-color: $primary-color;
+    max-width: 90%;
+    height: 95%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 7px 7px 20px 10px #24004628;
+    transform: translateX(-150%);
+    transition: all 0.5s;
+    &.show-card {
+      transform: translateX(0%);
+    }
+    @mixin registerLogin {
+      max-width: 100%;
+      height: 100%;
+      transition: all 0.4s;
+    }
+    @mixin forms {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 14px;
+      padding: 24px;
+      label {
+        width: 100%;
+        color: $white-text;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+      p {
+        @extend label;
+        font-size: 1.5rem;
+      }
+      .input {
+        width: 100%;
+        height: 40px;
+        background: $whiteSmoke-color;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+      }
+      button {
+        @include btns;
+        &.signup{
+          background-color: transparent;
+          &:hover {
+            background-color: $white-text;
+            color: $primary-color;
+          }
+        }
+        &.login{
+          background-color: transparent;
+          &:hover {
+            background-color: $white-text;
+            color: $secondary-color;
+          }
+        }
+        + p {
+          font-size: 1.1rem;
+          span.link-login {
+            text-decoration: underline;
+            cursor: pointer;
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+    .register {
+      // display: none;
+      @include registerLogin;
+      background-color: $primary-color;
+      &.remove-register {
+        transform: translateY(-101%);
+      }
+
+      .form {
+        @include registerLogin;
+        @include forms;
+      }
+    }
+    .login {
+      @include registerLogin;
+      background-color: $secondary-color;
+      transform: translateY(101%);
+      &.show-login {
+        transform: translateY(-100%);
+      }
+      .form {
+        @include registerLogin;
+        @include forms;
+        .link-signup {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .main-content{
+    #header {
+      padding: 10px 30px;
+      #nav-header {
+        .menu-hamb {
+          display: none;
+        }
+        #nav-list {
+          flex-direction: row;
+          position: static;
+          height: 100%;
+          width: 80%;
+          transform: translateX(0);
+          background-color: transparent;
+          justify-content: space-between;
+          a.li-option {
+            color: $black-text;
+          }
+          li.li-drop {
+            width: auto;
+            height: 200px;
+            display: grid;
+            grid-template-rows: calc(1fr / 2) 3fr;
+            grid-template-areas:
+              "span"
+              "drop";
+              align-self: self-start;
+              margin-top: 2px;
+            span {
+              grid-area: span;
+              color: $black-text;
+            }
+            .dropdown {
+              grid-area: drop;
+            }
+          }
+          ul#ul-btns {
+            flex-direction: row;
+            li > button {
+              &.btn-login {
+                &:hover {
+                  border-color: $secondary-color;
+                }
+              }
+              &.btn-signup {
+                &:hover {
+                  background-color: $white-text;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    #main-section {
+      justify-content: space-around;
+      gap: 0;
+      padding-right: 20px;
+      .bg-pets {
+        display: block;
+        min-width: 55%;
+        height: 100%;
+        background-image: url("../../imgs/bgPets.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left;
+      }
+    }
+  }
+}

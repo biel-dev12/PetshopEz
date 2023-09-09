@@ -1,0 +1,51 @@
+html, body{padding: 0;margin: 0;box-sizing: border-box; overflow-x: hidden; overflow-y: auto}
+
+@import "./outhers/colors.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+}
+
+.logo {
+  &:hover {
+    animation: anim-logo 0.7s;
+  }
+}
+
+button {
+  outline: none;
+}
+
+@keyframes anim-logo {
+  0% {
+    transform: rotate(4deg);
+  }
+  25% {
+    transform: rotate(-4deg) scale(1.07);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@import "./pages/signup-login.scss";
+@import "./pages/companyData.scss";
