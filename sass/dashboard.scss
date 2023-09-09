@@ -1,0 +1,16 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body{
+    height: 100vh;
+    background-color: #E4E9F7;
+}
+
+@import "./outhers/colors.scss";
+@import "./pages/sidebar.scss";

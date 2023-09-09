@@ -1,0 +1,24 @@
+@import "../outhers/colors.scss";
+
+.nav-link {
+  position: relative;
+
+  .collapse-icon {
+    position: absolute;
+    right: 10px; // Ajuste a posição horizontal conforme necessário
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+  }
+
+  &[aria-expanded="true"] {
+    .collapse-icon {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+}
+
+// Estilo para os ícones originais
+.original-icon {
+  margin-right: 10px;
+}

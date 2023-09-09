@@ -1,0 +1,33 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  height: 100vh;
+  background-color: #E4E9F7;
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link .collapse-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+}
+.nav-link[aria-expanded=true] .collapse-icon {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.original-icon {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=dash-style.css.map */
