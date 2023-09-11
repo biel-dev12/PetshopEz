@@ -16,9 +16,26 @@
       transform: translateY(-50%) rotate(90deg);
     }
   }
+  .bi-journals {
+    margin-right: 10px;
+  }
 }
 
-// Estilo para os ícones originais
-.original-icon {
-  margin-right: 10px;
+.sidebar-content {
+  .header-sidebar {
+    .shop-status {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: rgb(86, 196, 86);
+    }
+  }
+
+  i#closer {
+    cursor: pointer;
+  }
+
+  .shop-status-card {
+    text-align: center;
+  }
 }

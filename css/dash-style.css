@@ -25,9 +25,21 @@ body {
 .nav-link[aria-expanded=true] .collapse-icon {
   transform: translateY(-50%) rotate(90deg);
 }
-
-.original-icon {
+.nav-link .bi-journals {
   margin-right: 10px;
+}
+
+.sidebar-content .header-sidebar .shop-status {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(86, 196, 86);
+}
+.sidebar-content i#closer {
+  cursor: pointer;
+}
+.sidebar-content .shop-status-card {
+  text-align: center;
 }
 
 /*# sourceMappingURL=dash-style.css.map */
