@@ -35,11 +35,23 @@ body {
   border-radius: 50%;
   background-color: rgb(86, 196, 86);
 }
-.sidebar-content i#closer {
-  cursor: pointer;
+.sidebar-content .header-sidebar .shop-status i {
+  font-size: 25px;
 }
 .sidebar-content .shop-status-card {
   text-align: center;
+  background-color: rgba(86, 196, 86, 0.5);
+}
+.sidebar-content .nav li .nav-link {
+  color: #000;
+}
+.sidebar-content .nav li .nav-link:hover {
+  text-decoration: underline;
+}
+.sidebar-content .nav li .nav-link .icon-menu {
+  font-size: 22px;
+  color: #F27649;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=dash-style.css.map */

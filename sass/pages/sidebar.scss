@@ -28,14 +28,30 @@
       height: 30px;
       border-radius: 50%;
       background-color: rgb(86, 196, 86);
+      i {
+        font-size: 25px;
+      }
     }
-  }
-
-  i#closer {
-    cursor: pointer;
   }
 
   .shop-status-card {
     text-align: center;
+    background-color: rgba(86, 196, 86, 0.5);
+  }
+
+  .nav {
+    li {
+      .nav-link {
+        &:hover{
+          text-decoration: underline;
+        }
+        color: $black-text;
+        .icon-menu {
+          font-size: 22px;
+          color: $primary-color;
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
