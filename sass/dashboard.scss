@@ -1,3 +1,4 @@
+@import "./outhers/colors.scss";
 html,
 body {
   padding: 0;
@@ -12,5 +13,4 @@ body{
     background-color: #E4E9F7;
 }
 
-@import "./outhers/colors.scss";
 @import "./pages/sidebar.scss";

@@ -1,44 +1,29 @@
-// Abrir/fechar o menu do sidebar ao clicar no botão
-document.getElementById('btn-toggle').addEventListener('click', function() {
-    const sidebar = document.getElementById('sidebar');
-    const layoutContent = document.querySelector('.layout-content');
-    sidebar.classList.toggle('active');
-    layoutContent.classList.toggle('active');
-  });
-  
-  // Abrir o menu do sidebar ao passar o mouse
-  document.getElementById('sidebar').addEventListener('mouseenter', function() {
-    const sidebar = document.getElementById('sidebar');
-    const layoutContent = document.querySelector('.layout-content');
-    sidebar.classList.add('active');
-    layoutContent.classList.add('active');
-  });
-  
-  // Fechar o menu do sidebar ao retirar o mouse
-  document.getElementById('sidebar').addEventListener('mouseleave', function() {
-    const sidebar = document.getElementById('sidebar');
-    const layoutContent = document.querySelector('.layout-content');
-    sidebar.classList.remove('active');
-    layoutContent.classList.remove('active');
-  });
-  
-  // Atualizar o indicador de status
-  function setStatusOnline(online) {
-    const indicator = document.getElementById('status-icon');
-    if (online) {
-      indicator.classList.remove('offline');
-      indicator.classList.add('online');
+document.addEventListener("DOMContentLoaded", function () {
+  const statusIcon = document.querySelector(".status-icon");
+  const shopStatus = document.querySelector(".shop-status-card");
+  const shopStatusTxt = shopStatus.querySelector(".card-body");
+  const toggleStatusBtn = document.getElementById("toggleStatusBtn");
+  const statusIconElement = statusIcon.querySelector("i"); // Seleciona o elemento <i> dentro de "status-icon"
+
+  // Função para alternar o status entre online e offline
+  function toggleStatus() {
+    statusIcon.classList.toggle("status-online");
+    shopStatus.classList.toggle("status-online");
+
+    // Verifica se a loja está fechada
+    if (!statusIcon.classList.contains("status-online")) {
+      shopStatusTxt.textContent = "Loja fechada";
+      // Troca a classe do ícone para "bi-ban" quando a loja está fechada
+      statusIconElement.classList.remove("bi-check2-circle");
+      statusIconElement.classList.add("bi-ban");
     } else {
-      indicator.classList.remove('online');
-      indicator.classList.add('offline');
+      shopStatusTxt.textContent = "Seu Pet Shop está aberto!";
+      // Restaura a classe do ícone para "bi-check2-circle" quando a loja está aberta
+      statusIconElement.classList.remove("bi-ban");
+      statusIconElement.classList.add("bi-check2-circle");
     }
   }
-  
-  // Exemplo de atualização de status (online/offline)
-  let isOnline = true;
-  
-  document.getElementById('status-icon').addEventListener('click', function() {
-    isOnline = !isOnline;
-    setStatusOnline(isOnline);
-  });
-  
+
+  // Adicione um ouvinte de evento ao botão para alternar o status
+  toggleStatusBtn.addEventListener("click", toggleStatus);
+});
