@@ -30,15 +30,18 @@ aria-controls="offcanvasExample">
 <div class="sidebar-content offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3" tabindex="-1"
 id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 <div class="header-sidebar p-1 d-flex justify-content-around align-items-center">
-<span class="status-icon d-flex align-items-center justify-content-center"><i class="bi bi-check2-circle"></i></span>
+<span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag" class="bi "></i></span>
 <span class="fs-4 justify-self-start">KaoChorro Pet Shop</span>
 <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
 aria-controls="offcanvasExample"></button>
 </div>
 <div class="card shop-status-card mt-3">
 <div class="card-body" id="card-txt">
-<u>Seu Pet Shop está aberto!
-</u></div>
+</div>
+</div>
+<div class="form-check form-switch custom-switch mt-3">
+  <input class="form-check-input bg-on" type="checkbox" id="toggleStatusSwitch">
+  <label class="form-check-label" for="toggleStatusSwitch"></label>
 </div>
 <hr />
 <ul class="nav flex-column gap-3">
@@ -108,13 +111,6 @@ data-bs-toggle="dropdown" aria-expanded="false">
     </li>
     <li><a class="dropdown-item text-decoration-underline" href="#"><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
   </ul>
-</div>
-<div class="container mt-3">
-  <button class="btn btn-primary" id="toggleStatusBtn">Alternar Status</button>
-</div>
-</div>
-<div class="container mt-3">
-  <button class="btn btn-primary" id="toggleStatusBtn">Alternar Status</button>
 </div>
 
 <!-- Bootstrap5 script-->

@@ -42,15 +42,6 @@ $offlineColor: #b0b0b0;
     .btn-close {
       width: 8;
     }
-    .shop-status {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: rgb(86, 196, 86);
-      i {
-        font-size: 25px;
-      }
-    }
     .status-icon {
       width: $circleSize;
       height: $circleSize;
@@ -62,6 +53,15 @@ $offlineColor: #b0b0b0;
       &.status-online {
         background-color: $onlineColor;
         animation: alerta 1.5s infinite;
+        color: $white-text;
+        i{
+          font-size: 28px;
+          margin-bottom: 2px;
+        }
+      }
+
+      i{
+        font-size: 25px;
       }
     }
   }
@@ -69,8 +69,15 @@ $offlineColor: #b0b0b0;
   .shop-status-card {
     text-align: center;
     background-color: rgba($offlineColor, $alpha: 0.5);
+    transition: all 500ms ease-in-out;
     &.status-online {
       background-color: rgba($onlineColor, $alpha: 0.5);
+    }
+  }
+ 
+  .custom-switch {
+    .form-check-input:checked{
+      background-color: $onlineColor!important; 
     }
   }
 

@@ -46,15 +46,6 @@ body {
 .sidebar-content .header-sidebar .btn-close {
   width: 8;
 }
-.sidebar-content .header-sidebar .shop-status {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: rgb(86, 196, 86);
-}
-.sidebar-content .header-sidebar .shop-status i {
-  font-size: 25px;
-}
 .sidebar-content .header-sidebar .status-icon {
   width: 40px;
   height: 40px;
@@ -66,13 +57,25 @@ body {
 .sidebar-content .header-sidebar .status-icon.status-online {
   background-color: #4caf50;
   animation: alerta 1.5s infinite;
+  color: #fff;
+}
+.sidebar-content .header-sidebar .status-icon.status-online i {
+  font-size: 28px;
+  margin-bottom: 2px;
+}
+.sidebar-content .header-sidebar .status-icon i {
+  font-size: 25px;
 }
 .sidebar-content .shop-status-card {
   text-align: center;
   background-color: rgba(176, 176, 176, 0.5);
+  transition: all 500ms ease-in-out;
 }
 .sidebar-content .shop-status-card.status-online {
   background-color: rgba(76, 175, 80, 0.5);
+}
+.sidebar-content .custom-switch .form-check-input:checked {
+  background-color: #4caf50 !important;
 }
 .sidebar-content .nav li .nav-link {
   color: #000;
