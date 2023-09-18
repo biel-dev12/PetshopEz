@@ -74,6 +74,10 @@ body {
 .sidebar-content .shop-status-card.status-online {
   background-color: rgba(76, 175, 80, 0.5);
 }
+.sidebar-content .custom-switch .form-check-input, .sidebar-content .custom-switch .form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
 .sidebar-content .custom-switch .form-check-input:checked {
   background-color: #4caf50 !important;
 }
@@ -92,6 +96,9 @@ body {
 .sidebar-content .nav li .nav-link .icon-menu {
   font-size: 23px;
   color: #F27649;
+}
+.sidebar-content .nav li .nav-link.bg-active {
+  background-color: rgba(17, 144, 203, 0.9);
 }
 .sidebar-content .nav li .sub-itens .list-group a {
   cursor: pointer;

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +12,9 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
 
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-<link rel="shortcut icon" href="./imgs/favicon-cropped.svg" type="image/x-icon" />
-<link rel="stylesheet" href="./css/dash-style.css" />
+<link rel="shortcut icon" href="../imgs/favicon-cropped.svg" type="image/x-icon" />
+<link rel="stylesheet" href="../css/dash-style.css"/>
 </head>
-
 <body>
 <nav class="navbar shadow navbar-dark bgsucces fixed-top">
 <div class="container-fluid">
@@ -46,15 +44,15 @@ aria-controls="offcanvasExample"></button>
 <hr />
 <ul class="nav flex-column gap-3">
 <li>
-<a class="nav-link d-flex align-items-center border rounded-2" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+<a class="nav-link bg-active text-white d-flex align-items-center border rounded-2" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
 aria-controls="multiCollapseExample1">
 <i class="bi bi-clipboard-check me-2 icon-menu"></i> Pedidos
 <i class="bi bi-chevron-right collapse-icon"></i>
 </a>
 <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample1">
   <div class="list-group">
-    <a class="list-group-item list-group-item-action">Gestor</a>
-    <a class="list-group-item list-group-item-action">Pedidos anteriores</button>
+    <a href="./manager.html" class="list-group-item list-group-item-action">Gestor</a>
+    <a href="./order-history.html" class="list-group-item list-group-item-action">Pedidos anteriores</button>
   </div>
 </div>
 </li>
@@ -66,15 +64,14 @@ aria-controls="multiCollapseExample2">
 </a>
 <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample2">
   <div class="list-group">
-    <a  class="list-group-item list-group-item-action">Meus Produtos</a>
-    <a class="list-group-item list-group-item-action">Adicionar Produto</a>
-    <a class="list-group-item list-group-item-action">Adicionar Categoria</a>
+    <a href="./my-products.html" class="list-group-item list-group-item-action">Meus Produtos</a>
+    <a href="./addProduct.html" class="list-group-item list-group-item-action">Adicionar Produto</a>
+    <a href="./add-class.html" class="list-group-item list-group-item-action">Adicionar Categoria</a>
   </div>
-  
 </div>
 </li>
 <li>
-<a class="btn nav-link d-flex align-items-center border rounded-2" aria-expanded="false"
+<a href="./sales-history.html" class="btn nav-link d-flex align-items-center border rounded-2" aria-expanded="false"
 role="button">
 <i class="bi bi-clock-history me-2 icon-menu"></i> Historico de vendas
 </a>
@@ -88,8 +85,8 @@ aria-controls="multiCollapseExample4">
 </a>
 <div class="collapse multi-collapse mt-2 border" id="multiCollapseExample4">
   <div class="list-group">
-    <button type="button" class="list-group-item list-group-item-action">Meu saldo</button>
-    <button type="button" class="list-group-item list-group-item-action">Mudar conta de pagamento</button>
+    <a href="./my-balance.html" class="list-group-item list-group-item-action">Meu saldo</a>
+    <a href="./payament-account.html" class="list-group-item list-group-item-action">Mudar conta de pagamento</button>
     
   </div>
 </div>
@@ -97,19 +94,19 @@ aria-controls="multiCollapseExample4">
 </ul>
 <hr />
 <div class="dropdown">
-<a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+<a class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
 data-bs-toggle="dropdown" aria-expanded="false">
-<img src="./imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50" class="img-shop border-black border rounded-circle me-2" />
+<img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50" class="img-shop border-black border rounded-circle me-2" />
 <strong>KãoChorro Pet Shop</strong>
 </a>
 
   <ul class="dropdown-menu text-small shadow">
-    <li><a class="dropdown-item" href="#">Configurações do Perfil</a></li>
-    <li><a class="dropdown-item" href="#">Ver minha loja</a></li>
+    <li><a class="dropdown-item" href="./profile-config.html">Configurações do Perfil</a></li>
+    <li><a class="dropdown-item" href="./view-shop.html">Ver minha loja</a></li>
     <li>
       <hr class="dropdown-divider" />
     </li>
-    <li><a class="dropdown-item text-decoration-underline" href="#"><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
+    <li><a class="dropdown-item text-decoration-underline"><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
   </ul>
 </div>
 
@@ -118,6 +115,6 @@ data-bs-toggle="dropdown" aria-expanded="false">
 integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 crossorigin="anonymous"></script>
 
-<script src="./js/dashboard2.js"></script>
+<script src="../js/dashboard2.js"></script>
 </body>
 </html>

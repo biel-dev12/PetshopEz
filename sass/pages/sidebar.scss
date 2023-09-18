@@ -76,6 +76,10 @@ $offlineColor: #b0b0b0;
   }
  
   .custom-switch {
+    .form-check-input, .form-check-label{
+    cursor: pointer;
+      user-select: none;
+    }
     .form-check-input:checked{
       background-color: $onlineColor!important; 
     }
@@ -99,6 +103,9 @@ $offlineColor: #b0b0b0;
         .icon-menu {
           font-size: 23px;
           color: $primary-color;
+        }
+        &.bg-active{
+          background-color: rgba($secondary-color, $alpha: 0.9);
         }
       }
       .sub-itens {
