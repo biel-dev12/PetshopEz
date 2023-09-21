@@ -11,6 +11,13 @@
     href="./imgs/favicon-cropped.svg"
     type="image/x-icon"
   />
+
+  <!-- Bootstrap5 link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </head>
 <body>
   <div class="main-content2">
@@ -29,7 +36,7 @@
       </nav>
     </header>
     <main id="main-section2">
-      <form id="stepForm" class="needs-validation">
+      <form id="stepForm" class="needs-validation" method="post">
         <!-- Step 1 -->
         <div class="form-step step1">
           <h2>Informações do Responsável</h2>
@@ -137,25 +144,23 @@
       </form>
       <div class="bg-pets"></div>
     </main>
-    <div class="form-submitted" style="display: none;">
-      <h1>Ebaa! A <span></span> foi cadastrada com sucesso, agora você faz parte da equipe!</h1>
-      <p>Você está sendo encaminhado para página de <u>login</u>. Entre com seu e-mail e senha.</p>
-      <div class="loader loader--style2" title="1">
-        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-           width="50px" height="50px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-        <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
-          <animateTransform attributeType="xml"
-            attributeName="transform"
-            type="rotate"
-            from="0 25 25"
-            to="360 25 25"
-            dur="0.6s"
-            repeatCount="indefinite"/>
-          </path>
-        </svg>
+    <div class="modal" id="modalForm" style="display: none;">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-3 border-primary">
+          <div class="modal-body text-center">
+            <h1 class="mb-3">Ebaa! A <span id="span-name"></span> foi cadastrada com sucesso, agora você faz parte da equipe!</h1>
+            <p>Você está sendo encaminhado para a página de <u>login</u>. Entre com seu e-mail e senha.</p>
+            <div class="spinner-border text-primary" role="status">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+   <!-- Bootstrap5 script-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+   crossorigin="anonymous"></script>
   <script src="./js/formCompanyData.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>

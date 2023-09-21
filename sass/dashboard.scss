@@ -8,9 +8,21 @@ body {
   overflow-y: auto;
 }
 
-body{
-    height: 100vh;
-    background-color: #E4E9F7;
+body {
+  height: 100vh;
+  background-color: #d9d9d9;
+  .navbar {
+    width: 100%;
+    .header-body {
+      .btn-hamb {
+        background-color: $secondary-color;
+      }
+      .page-name {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 @import "./pages/sidebar.scss";
+@import "./pages/manager.scss";

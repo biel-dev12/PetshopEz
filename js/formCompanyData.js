@@ -5,7 +5,7 @@ const prevButtons = Array.from(document.querySelectorAll('.prev-button'));
 const nextButtons = Array.from(document.querySelectorAll('.next-button'));
 const form = document.getElementById('stepForm');
 const inputs = document.querySelectorAll(".inps input");
-const modalFormSubmitted = document.querySelector(".form-submitted");
+const modalFormSubmitted = document.getElementById("modalForm");
 
 let currentStep = 0;
 
@@ -72,25 +72,35 @@ nextButtons.forEach((button, index) => {
   });
 });
 
+form.addEventListener("keydown", event =>{
+  if (event.key === "Enter") {
+    event.preventDefault(); // Impede o envio do formulário
+}
+});
+
 form.addEventListener('submit', event => {
   event.preventDefault();
 
   if (!form.checkValidity()) {
     event.stopPropagation();
   } else {
-    // Mostrar o modal após o envio bem-sucedido
-    const petshopName = document.querySelector(".form-submitted h1 span");
-    const inpPetshopName = document.querySelector("input[name='fantasy-name']").value;
-    const mainAndHeader = [document.querySelector("#main-section2"), document.querySelector("#header")]
-    modalFormSubmitted.style.display = "flex";
-    petshopName.innerText = inpPetshopName;
-    mainAndHeader.forEach( el => el.style = "filter: blur(5px);");
-    setTimeout(() => {
-      modalFormSubmitted.style.display = "none";
-      form.reset();
-      goToStep(0);
-      location.href = "../signUp.html";
-    }, 10000);
+    const fantasyName = form.querySelector("input[name='fantasy-name']").value;
+    
+    // Mostrar o modal Bootstrap
+     $(modalForm).modal('show');
+
+     const spanElement = document.getElementById('span-name');
+     spanElement.innerText = fantasyName;
+
+     // Atraso de 10 segundos antes do envio
+     setTimeout(() => {
+       // Envie o formulário
+       form.submit();
+ 
+       // Após o envio do formulário e do atraso, você pode ocultar o modal Bootstrap
+       $(modalForm).modal('hide');
+       form.reset();
+     }, 10000);
   }
 
   form.classList.add('was-validated');
