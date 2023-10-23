@@ -1,0 +1,55 @@
+@import "../outhers/colors.scss";
+
+.content-master {
+  width: 100vw;
+  height: 100vh;
+  #header {
+    .navbar {
+      background-color: $white-text !important;
+      .container-fluid {
+        .navbar-brand {
+          width: 10%;
+          img {
+            width: 100%;
+          }
+        }
+        .navbar-toggler {
+          transition: all 2s;
+          outline: none;
+          box-shadow: none;
+        }
+        .navbar-collapse {
+          .navbar-nav {
+            .nav-item {
+                margin: 0 1rem;
+                .nav-link {
+                    box-shadow: none;
+                    &.text {
+                    color: $black-text !important;
+                    font-weight: bold;
+                    &:hover{
+                        opacity: .7;
+                    }
+                }
+              }
+            }
+          }
+          .btns{
+            display: flex;
+            gap: 10px;
+            button{
+                color: $white-text;
+                font-weight: 500;
+                &.btn-login{
+                    background-color: $primary-color;
+                }
+                &.btn-signup{
+                    background-color: $secondary-color;
+                }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,22 +1,110 @@
 @import "../outhers/colors.scss";
 
 .content-master {
-    width: 100vw;
-    height: 100vh;
-  .main-content {
-    width: 100%;
-    height: auto;
-    section {
-      &.orders {
-        width: 30%;
-        height: 100%;
-        border-right: 2px solid;
-        display: block;
-      }
-      &.open-orders {
-        width: 70%;
-        height: 100%;
-      }
+  .nav-custom {
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    padding: 0px 35px !important;
+    height: 9vh;
+    button {
+      background-color: $secondary-color;
+      margin: 0;
     }
+  }
+
+  .main-content {
+    height: 90vh;
+    .card-orders-bg {
+        .orders {
+          h2 {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            // background-color: $whiteSmoke-color;
+          }
+          ul#pending-orders {
+            .card-orders {
+              cursor: pointer;
+              padding: 10px 15px!important;
+              background-color: rgba($primary-color, $alpha: 0.85);
+              h6.num-order{
+                width: fit-content;
+                padding: 5px;
+                border-radius: 10px;
+                background-color: rgba($secondary-color, $alpha: 0.9);
+                opacity: .8;
+              }
+              #buttons-order{
+                a{
+                  &.delivery{
+                    display: none;
+                  }
+                  &.completed{
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+      .open-orders{
+        padding: 0 10px;
+        #order-details{
+          .desc-order{
+            display: flex;
+            flex-direction: column;
+            .alert{
+              padding: 5px 2rem;
+              font-size: 20px;
+              display: flex;
+              flex-direction: row!important;
+              justify-content: space-between;
+              align-items: center;
+              div{
+                display: flex;
+                gap: 10px;
+              }
+              a{
+                font-size: 2rem;
+                color: $onlineColor;
+              }
+            }
+            .datas-client{
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              text-transform: uppercase;
+              font-weight: 500;
+              padding: 1rem 1.3rem;
+              font-size: 1rem;
+              .dt-info{
+                color: $secondary-color;
+              }
+              .qt-orders{
+                background-color: $primary-color;
+              }
+              .card-itens{
+                text-transform: none;
+                margin-top: 1rem;
+              .card-header{
+                text-align: center;
+              }
+              .card-footer{
+                padding-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                .total-order{
+                  color: #008000
+                }
+              }
+              }
+            }
+          }
+        }
+      }
   }
 }

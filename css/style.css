@@ -674,5 +674,50 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
     height: 35%;
   }
 }
+.content-master {
+  width: 100vw;
+  height: 100vh;
+}
+.content-master #header .navbar {
+  background-color: #fff !important;
+}
+.content-master #header .navbar .container-fluid .navbar-brand {
+  width: 10%;
+}
+.content-master #header .navbar .container-fluid .navbar-brand img {
+  width: 100%;
+}
+.content-master #header .navbar .container-fluid .navbar-toggler {
+  transition: all 2s;
+  outline: none;
+  box-shadow: none;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item {
+  margin: 0 1rem;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link {
+  box-shadow: none;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text {
+  color: #000 !important;
+  font-weight: bold;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text:hover {
+  opacity: 0.7;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .btns {
+  display: flex;
+  gap: 10px;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .btns button {
+  color: #fff;
+  font-weight: 500;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .btns button.btn-login {
+  background-color: #F27649;
+}
+.content-master #header .navbar .container-fluid .navbar-collapse .btns button.btn-signup {
+  background-color: #1190CB;
+}
 
 /*# sourceMappingURL=style.css.map */

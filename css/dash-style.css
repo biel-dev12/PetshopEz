@@ -6,6 +6,21 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+html p,
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+body p,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5 {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   height: 100vh;
@@ -19,6 +34,9 @@ body .navbar .header-body .btn-hamb {
 }
 body .navbar .header-body .page-name {
   text-decoration: underline;
+}
+body #opt-name {
+  cursor: pointer;
 }
 
 .btn:focus,
@@ -139,23 +157,283 @@ body .navbar .header-body .page-name {
     margin-top: 7px;
   }
 }
-.content-master {
-  width: 100vw;
-  height: 100vh;
+.content-master .nav-custom {
+  display: flex;
+  flex-direction: row;
+  align-items: center !important;
+  padding: 0px 35px !important;
+  height: 9vh;
+}
+.content-master .nav-custom button {
+  background-color: #1190CB;
+  margin: 0;
 }
 .content-master .main-content {
-  width: 100%;
-  height: auto;
+  height: 90vh;
 }
-.content-master .main-content section.orders {
-  width: 30%;
-  height: 100%;
-  border-right: 2px solid;
-  display: block;
+.content-master .main-content .card-orders-bg .orders h2 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
-.content-master .main-content section.open-orders {
-  width: 70%;
-  height: 100%;
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders {
+  cursor: pointer;
+  padding: 10px 15px !important;
+  background-color: rgba(242, 118, 73, 0.85);
+}
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders h6.num-order {
+  width: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(17, 144, 203, 0.9);
+  opacity: 0.8;
+}
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.delivery {
+  display: none;
+}
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.completed {
+  display: none;
+}
+.content-master .main-content .open-orders {
+  padding: 0 10px;
+}
+.content-master .main-content .open-orders #order-details .desc-order {
+  display: flex;
+  flex-direction: column;
+}
+.content-master .main-content .open-orders #order-details .desc-order .alert {
+  padding: 5px 2rem;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-master .main-content .open-orders #order-details .desc-order .alert div {
+  display: flex;
+  gap: 10px;
+}
+.content-master .main-content .open-orders #order-details .desc-order .alert a {
+  font-size: 2rem;
+  color: #4caf50;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 1rem 1.3rem;
+  font-size: 1rem;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .dt-info {
+  color: #1190CB;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .qt-orders {
+  background-color: #F27649;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .card-itens {
+  text-transform: none;
+  margin-top: 1rem;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .card-itens .card-header {
+  text-align: center;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .card-itens .card-footer {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.content-master .main-content .open-orders #order-details .desc-order .datas-client .card-itens .card-footer .total-order {
+  color: #008000;
+}
+
+.content-master div .card-orders-bg #pending-orders .card-orders {
+  cursor: pointer;
+  padding: 10px 15px !important;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.content-master div .card-orders-bg #pending-orders .card-orders h6.num-order {
+  width: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #1190cb;
+  opacity: 1;
+}
+
+.content-master .main-content {
+  height: 90vh;
+}
+.content-master .main-content .card-categs div .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.content-master .main-content .card-categs div .card-header:hover {
+  background-color: rgb(240, 238, 238);
+}
+.content-master .main-content .card-categs div .card-header .nm-categ {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #000;
+  letter-spacing: 0.1rem;
+}
+.content-master .main-content .card-categs div .card-header .btn-categ {
+  text-align: center !important;
+  width: auto !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 12px !important;
+  padding: 5px 10px !important;
+  transition: all 0.3s !important;
+  outline: none !important;
+  z-index: 100;
+}
+.content-master .main-content .card-categs div .card-header .btn-categ.on {
+  background-color: #F27649;
+}
+.content-master .main-content .card-categs div .card-header .btn-categ.on:hover {
+  background-color: #1190CB;
+}
+.content-master .main-content .card-categs div .card-header .btn-categ.off {
+  background-color: #1190CB;
+}
+.content-master .main-content .card-categs div .card-header .btn-categ.off:hover {
+  background-color: #F27649;
+}
+.content-master .main-content .card-categs .collapse .card-body, .content-master .main-content .card-categs .collapsing .card-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+.content-master .main-content .card-categs .collapse .card-body .card, .content-master .main-content .card-categs .collapsing .card-body .card {
+  width: 14rem;
+  height: 19rem;
+  box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.5);
+}
+.content-master .main-content .card-categs .collapse .card-body .card .edit, .content-master .main-content .card-categs .collapsing .card-body .card .edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(17, 144, 203, 0.8);
+  transition: all 0.3s;
+  width: 40px;
+  height: 40px;
+  position: absolute !important;
+  top: 3px !important;
+  right: 3px !important;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .edit i, .content-master .main-content .card-categs .collapsing .card-body .card .edit i {
+  font-size: 25px;
+  transition: all 0.3s;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .edit:hover, .content-master .main-content .card-categs .collapsing .card-body .card .edit:hover {
+  background-color: #1190cb;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .edit:hover i, .content-master .main-content .card-categs .collapsing .card-body .card .edit:hover i {
+  color: #fff;
+  transform: scale(1.1);
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal, .content-master .main-content .card-categs .collapsing .card-body .card .modal {
+  --bs-modal-width: 50%;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body {
+  overflow-x: hidden;
+  background-color: rgb(221, 221, 221);
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit label, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit label {
+  font-weight: bold;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit input, .content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit textarea, .content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit select, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit input, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit textarea, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit select {
+  border: 1px solid #1190CB;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img {
+  width: 10rem;
+  height: 8rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img img, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img img {
+  border-radius: 12px;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod {
+  width: 20rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod {
+  width: 10rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod {
+  width: 20rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select {
+  cursor: pointer;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod {
+  width: 10rem;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a {
+  border-radius: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a.save-edit, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a.save-edit {
+  background-color: #1190CB !important;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .card-img-top, .content-master .main-content .card-categs .collapsing .card-body .card .card-img-top {
+  height: 50%;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .card-text, .content-master .main-content .card-categs .collapsing .card-body .card .infos .card-text {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod {
+  text-align: center !important;
+  width: auto !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 12px !important;
+  padding: 5px 10px !important;
+  transition: all 0.3s !important;
+  outline: none !important;
+  z-index: 100;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on {
+  background-color: #F27649;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on:hover, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on:hover {
+  background-color: #1190CB;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off {
+  background-color: #1190CB;
+}
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off:hover, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off:hover {
+  background-color: #F27649;
 }
 
 /*# sourceMappingURL=dash-style.css.map */

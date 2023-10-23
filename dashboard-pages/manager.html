@@ -23,17 +23,16 @@
     id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="header-sidebar p-1 d-flex justify-content-around align-items-center">
       <span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag"
-          class="bi "></i></span>
+          class="bi"></i></span>
       <span class="name-shop fs-4 justify-self-start">KaoChorro Pet Shop</span>
       <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
         aria-controls="offcanvasExample"></button>
     </div>
     <div class="card shop-status-card mt-3">
-      <div class="card-body" id="card-txt">
-      </div>
+      <div class="card-body" id="card-txt"></div>
     </div>
     <div class="form-check form-switch custom-switch mt-3">
-      <input class="form-check-input bg-on" type="checkbox" id="toggleStatusSwitch">
+      <input class="form-check-input bg-on" type="checkbox" id="toggleStatusSwitch" />
       <label class="form-check-label" for="toggleStatusSwitch"></label>
     </div>
     <hr />
@@ -68,7 +67,8 @@
       <li>
         <a href="./sales-history.html" class="btn nav-link d-flex align-items-center border rounded-2"
           aria-expanded="false" role="button">
-          <i class="bi bi-clock-history me-2 icon-menu"></i> Historico de vendas
+          <i class="bi bi-clock-history me-2 icon-menu"></i> Historico de
+          vendas
         </a>
       </li>
       <hr class="my-2" />
@@ -83,7 +83,6 @@
             <a href="./my-balance.html" class="list-group-item list-group-item-action">Meu saldo</a>
             <a href="./payament-account.html" class="list-group-item list-group-item-action">Mudar conta de
               pagamento</a>
-
           </div>
         </div>
       </li>
@@ -94,51 +93,107 @@
         data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50"
           class="img-shop border-black border rounded-circle me-2" />
-        <strong>KãoChorro Pet Shop</strong>
+        <strong id="opt-name">KãoChorro Pet Shop</strong>
       </a>
 
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="./profile-config.html">Configurações do Perfil</a></li>
-        <li><a class="dropdown-item" href="./view-shop.html">Ver minha loja</a></li>
+        <li>
+          <a class="dropdown-item" href="./profile-config.html">Configurações do Perfil</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="./view-shop.html">Ver minha loja</a>
+        </li>
         <li>
           <hr class="dropdown-divider" />
         </li>
-        <li><a class="dropdown-item text-decoration-underline"><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
+        <li>
+          <a class="dropdown-item text-decoration-underline"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
+        </li>
       </ul>
     </div>
   </div>
 
-  <div class="content-master"> 
-     <!-- Navbar -->
-    <nav class="navbar shadow navbar-dark mb-1 position-static">
-      <div class="header-body container-fluid d-flex">
-        <button class="btn-hamb navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <h1 class="page-name">Gestor</h1>
-        <img src="../imgs/logo-ezpets.svg" alt="Logo Ezpets" width="100" class="img-fluid">
-      </div>
+  <div class="content-master">
+    <!-- Navbar -->
+    <nav class="navbar shadow navbar-dark nav-custom">
+      <button class="btn-hamb navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="page-name">Gestor</h1>
+      <img src="../imgs/logo-ezpets.svg" alt="Logo Ezpets" width="100" class="img-fluid" />
     </nav>
-  
+
     <!-- Main content -->
-    <main class="main-content d-flex flex-row justify-content-center">
+    <main class="main-content d-flex flex-row justify-content-center mt-1">
       <!-- Seção de Pedidos Pendentes -->
-      <section class="orders container-fluid">
-          <h2 class="text-center">Pedidos Pendentes</h2>
-          <ul class="list-group" id="pending-orders">
-              <!-- Espaço reservado para os pedidos pendentes -->
-          </ul>
-      </section>
+      <div class="col-md-4">
+        <div class="card h-100 card-orders-bg">
+          <div class="orders container-fluid rounded" style="max-height: 100vh; overflow-y: auto">
+            <h2 class="text-center pt-2 border-bottom border-dark mb-2">
+              Pedidos Pendentes
+            </h2>
+            <ul class="list-group" id="pending-orders">
+              <section class="card-body card-orders text-white rounded d-flex flex-column" id="order1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="card-title num-order">Pedido #22222</h6>
+                  <h6 class="card-title">Status: Pendente</h6>
+                </div>
+                <div class="d-flex justify-content-around mb-1">
+                  <h5 class="card-text border-end pe-3">Cliente: Denilson</h5>
+                  <h5 class="card-text">Hora do Pedido: 11:30</h5>
+                </div>
+                <div class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3"
+                  id="buttons-order">
+                  <a class="btn btn-success accept">Aceitar</a>
+                  <a class="btn btn-danger refuse">Recusar</a>
+                  <a class="btn btn-primary delivery">Em Trânsito</a>
+                  <a class="btn btn-success completed">Entregue</a>
+                </div>
+              </section>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <!-- Seção de Detalhes do Pedido -->
-      <section class="open-orders">
-          <h2>Detalhes do Pedido</h2>
+      <div class="col-md-8">
+        <div class="open-orders">
+          <h2 class="text-center pt-2 border-bottom border-dark mb-2">
+            Detalhes do Pedido
+          </h2>
           <div id="order-details">
-              <!-- Espaço reservado para os detalhes do pedido selecionado -->
+            <section class="desc-order" id="desc-order1">
+            <div class="alert alert-dark" role="alert">
+              <div>
+              <p>Pedido #22222 - </p>
+              <p>Hora do Pedido: 11:30  - </p>
+              <p>Status: Pendente</p>
+              </div>
+              <a href=""><i class="bi bi-whatsapp"></i></a>
+            </div>
+            <div class="card datas-client">     
+            <p class="">Cliente: <span class="dt-info">Denilson</span><span class="qt-orders badge">1° Pedido</span></p>
+            <p class="">Endereço: <span class="dt-info"> José Bonifácio, 555 - Tude Bastos</span></p>
+            <p>Complemento: <span class="dt-info"> Apto 2</span></p>
+            <div class="card card-itens">
+              <h5 class="card-header">Itens do Pedido</h5>
+              <div class="card-body">
+                <p>1x Pacote de Ração Golden - <span class="vl-item">R$ 150,00</span><hr></p>
+                <p>2x Brinquedo - <span class="vl-item">R$ 20,00</span></p>
+              </div>
+              <div class="card-footer">
+                <p>Subtotal: <span>R$ 170,00</span></p>
+                <p>Taxa de Entrega: <span>R$ 4,00</span></p>
+                <p>Total: <span class="total-order">R$ 174,00</span></p>
+              </div>
+            </div>
+            </div>
+          </section>
           </div>
-      </section>
-  </main>
+        </div>
+      </div>
+    </main>
   </div>
 
   <!-- Bootstrap5 script-->
@@ -146,6 +201,93 @@
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
   <script src="../js/dashboard.js"></script>
-  <script src="../js/manager.js"></script>
+  <!-- <script>
+      // Função para exibir pedidos pendentes
+      function displayPendingOrders(ordersData) {
+        const pendingOrdersGroup = document.getElementById("pending-orders");
+        pendingOrdersGroup.innerHTML = "";
+
+        ordersData.forEach((order) => {
+          const card = document.createElement("div");
+          card.classList.add("card", "mb-3");
+          card.innerHTML = `
+            <div class="card-body card-orders text-white rounded d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="card-title num-order">Pedido #</h6>
+                    <h6 class="card-title">Status:</h6>
+                </div>
+                <div class="d-flex justify-content-around mb-1">
+                    <h6 class="card-text border-end pe-3">Cliente:</h5>
+                    <h5 class="card-text">Hora do Pedido:</h5>
+                </div>
+                <div class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3"
+                    id="buttons-order-${order.id}">
+                    <button class="btn btn-success">Aceitar</button>
+                    <button class="btn btn-danger">Recusar</button>
+                </div>
+            </div>
+        `;
+          card.addEventListener("click", () => showOrderDetails(order));
+          pendingOrdersGroup.appendChild(card);
+        });
+      }
+
+      // Função para exibir detalhes do pedido selecionado
+      function showOrderDetails(order) {
+        const orderDetails = document.getElementById("order-details");
+        orderDetails.innerHTML = `
+                <h4>Detalhes do Pedido #${order.id}</h4>
+                <p><strong>Cliente:</strong> ${order.customer}</p>
+                <p><strong>Itens:</strong> ${order.items.join(", ")}</p>
+            `;
+      }
+
+      // Função para simular aceitar um pedido
+      function acceptOrder(orderId) {
+        // Implemente a lógica de aceitação do pedido aqui (pode ser no backend)
+        alert(`Pedido #${orderId} aceito`);
+
+        // Remove a div com a classe "buttons-order"
+        const buttonsOrderDiv = document.getElementById(
+          `buttons-order-${orderId}`
+        );
+        if (buttonsOrderDiv) {
+          buttonsOrderDiv.remove();
+        }
+      }
+
+      // Função para simular recusar um pedido
+      function rejectOrder(orderId) {
+        // Implemente a lógica de recusa do pedido aqui (pode ser no backend)
+        alert(`Pedido #${orderId} recusado`);
+        // Remove a div com a classe "buttons-order"
+        const buttonsOrderDiv = document.getElementById(
+          `buttons-order-${orderId}`
+        );
+        if (buttonsOrderDiv) {
+          buttonsOrderDiv.remove();
+        }
+      }
+
+      // Função para buscar dados do servidor e atualizar a lista de pedidos
+      function fetchOrdersFromServer() {
+        fetch("../php/get-orders.php")
+          .then((response) => response.json())
+          .then((data) => {
+            ordersData = data.reverse(); // Inverter a ordem dos pedidos mais recentes primeiro
+            displayPendingOrders(ordersData);
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar dados do servidor:", error);
+          });
+      }
+
+      // Atualizar pedidos do servidor a cada 5 segundos (5000 milissegundos)
+      setInterval(fetchOrdersFromServer, 5000);
+
+      // Chamar a função inicialmente para exibir os pedidos existentes
+      fetchOrdersFromServer();
+    </script> -->
 </body>
+
 </html>

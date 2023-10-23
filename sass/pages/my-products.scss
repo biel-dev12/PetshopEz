@@ -1,0 +1,171 @@
+@import "../outhers/colors.scss";
+
+@mixin btnOnOff {
+  text-align: center !important;
+  width: auto !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 12px !important;
+  padding: 5px 10px !important;
+  transition: all 0.3s !important;
+  outline: none !important;
+  z-index: 100;
+  &.on {
+    background-color: $primary-color;
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+  &.off {
+    background-color: $secondary-color;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+}
+
+.content-master {
+  .main-content {
+    height: 90vh;
+    .card-categs {
+      // height: 100%;
+      div {
+        .card-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(240, 238, 238);
+          }
+          .nm-categ {
+            text-decoration: none;
+            font-size: 1.8rem;
+            color: $black-text;
+            letter-spacing: 0.1rem;
+          }
+          .btn-categ {
+            @include btnOnOff;
+          }
+        }
+      }
+      .collapse,.collapsing {
+        .card-body {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: center;
+          gap: 12px;
+          .card {
+            width: 14rem;
+            height: 19rem;
+            box-shadow: 2px 2px 13px rgba($black-text, $alpha: 0.5);
+            .edit {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba($secondary-color, $alpha: 0.8);
+              transition: all 0.3s;
+              width: 40px;
+              height: 40px;
+              position: absolute !important;
+              top: 3px !important;
+              right: 3px !important;
+              border-radius: 50%;
+              cursor: pointer;
+              i {
+                font-size: 25px;
+                transition: all 0.3s;
+              }
+              &:hover {
+                background-color: rgba($secondary-color, $alpha: 1);
+                i {
+                  color: $white-text;
+                  transform: scale(1.1);
+                }
+              }
+            }
+
+            .modal {
+              --bs-modal-width: 50%;
+              .modal-body {
+                overflow-x: hidden;
+                background-color: rgb(221, 221, 221);
+                .form-edit {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 20px;
+                  label{
+                    font-weight: bold;
+                  }
+                  input, textarea, select{
+                    border: 1px solid $secondary-color;
+                  }
+                  .header-form {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: 8rem;
+                    .box-img {
+                      width: 10rem;
+                      height: 8rem;
+                      img{
+                        border-radius: 12px;
+                      }
+                    }
+                    .datas {
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 10px;
+                      .nm-prod {
+                        width: 20rem;
+                      }
+                      .cod-prod {
+                        width: 10rem;
+                      }
+                      .categ-prod {
+                        width: 20rem;
+                        select {
+                          cursor: pointer;
+                        }
+                      }
+                      .vl-prod {
+                        width: 10rem;
+                      }
+                    }
+                  }
+                }
+              }
+              .modal-footer {
+                a {
+                  border-radius: 1rem;
+                  font-weight: bold;
+                  color: $white-text;
+                  &.save-edit {
+                    background-color: $secondary-color !important;
+                  }
+                }
+              }
+            }
+
+            .card-img-top {
+              height: 50%;
+            }
+            .infos {
+              .card-text {
+                font-size: 1.1rem;
+                font-weight: 400;
+              }
+              .btn-prod {
+                @include btnOnOff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
