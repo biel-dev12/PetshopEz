@@ -457,7 +457,7 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
     display: block !important;
     min-width: 55%;
     height: 100%;
-    background-image: url("../../imgs/images.jpg");
+    background-image: url("../imgs/bgPets.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;
