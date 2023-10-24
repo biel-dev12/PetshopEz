@@ -364,10 +364,10 @@
       gap: 0;
       padding-right: 20px;
       .bg-pets {
-        display: block;
+        display: block!important;
         min-width: 55%;
         height: 100%;
-        background-image: url("../../imgs/bgPets.svg");
+        background-image: url("../../imgs/images.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: left;

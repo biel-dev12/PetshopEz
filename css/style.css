@@ -454,10 +454,10 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
     padding-right: 20px;
   }
   .main-content #main-section .bg-pets {
-    display: block;
+    display: block !important;
     min-width: 55%;
     height: 100%;
-    background-image: url("../../imgs/bgPets.svg");
+    background-image: url("../../imgs/images.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;

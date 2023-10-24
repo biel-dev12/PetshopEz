@@ -46,8 +46,8 @@
         </a>
         <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample1">
           <div class="list-group">
-            <a href="./manager.html" class="list-group-item list-group-item-action">Gestor</a>
-            <a href="./order-history.html" class="list-group-item list-group-item-action">Pedidos anteriores</a>
+            <a href="./manager.php" class="list-group-item list-group-item-action">Gestor</a>
+            <a href="./order-history.php" class="list-group-item list-group-item-action">Pedidos anteriores</a>
           </div>
         </div>
       </li>
@@ -59,14 +59,14 @@
         </a>
         <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample2">
           <div class="list-group">
-            <a href="./my-products.html" class="list-group-item list-group-item-action">Meus Produtos</a>
-            <a href="./addProduct.html" class="list-group-item list-group-item-action">Adicionar Produto</a>
-            <a href="./add-class.html" class="list-group-item list-group-item-action">Adicionar Categoria</a>
+            <a href="./my-products.php" class="list-group-item list-group-item-action">Meus Produtos</a>
+            <a href="./addProduct.php" class="list-group-item list-group-item-action">Adicionar Produto</a>
+            <a href="./add-class.php" class="list-group-item list-group-item-action">Adicionar Categoria</a>
           </div>
         </div>
       </li>
       <li>
-        <a href="./sales-history.html" class="btn nav-link d-flex align-items-center border rounded-2"
+        <a href="./sales-history.php" class="btn nav-link d-flex align-items-center border rounded-2"
           aria-expanded="false" role="button">
           <i class="bi bi-clock-history me-2 icon-menu"></i> Historico de vendas
         </a>
@@ -80,8 +80,8 @@
         </a>
         <div class="collapse multi-collapse mt-2 border" id="multiCollapseExample4">
           <div class="list-group">
-            <a href="./my-balance.html" class="list-group-item list-group-item-action">Meu saldo</a>
-            <a href="./payament-account.html" class="list-group-item list-group-item-action">Mudar conta de
+            <a href="./my-balance.php" class="list-group-item list-group-item-action">Meu saldo</a>
+            <a href="./payament-account.php" class="list-group-item list-group-item-action">Mudar conta de
               pagamento</a>
 
           </div>
@@ -98,8 +98,8 @@
       </a>
 
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="./profile-config.html">Configurações do Perfil</a></li>
-        <li><a class="dropdown-item" href="./view-shop.html">Ver minha loja</a></li>
+        <li><a class="dropdown-item" href="./profile-config.php">Configurações do Perfil</a></li>
+        <li><a class="dropdown-item" href="./view-shop.php">Ver minha loja</a></li>
         <li>
           <hr class="dropdown-divider" />
         </li>
