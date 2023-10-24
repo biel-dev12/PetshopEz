@@ -1,4 +1,9 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -18,13 +23,28 @@
 </head>
 
 <body>
+    
+    <?php
+
+  if (!isset($_SESSION['email01'])) {
+  ?>
+
+    <script>
+      location.href = "../signup.php";
+    </script>
+  <?php
+
+  }
+
+  ?>
+    
   <!-- Sidebar Menu-->
   <div class="sidebar-content offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3" tabindex="-1"
     id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="header-sidebar p-1 d-flex justify-content-around align-items-center">
       <span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag"
           class="bi "></i></span>
-      <span class="name-shop fs-4 justify-self-start">KaoChorro Pet Shop</span>
+      <span class="name-shop fs-4 justify-self-start"><?php echo $_SESSION['name'];?></span>
       <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
         aria-controls="offcanvasExample"></button>
     </div>
@@ -103,7 +123,7 @@
         <li>
           <hr class="dropdown-divider" />
         </li>
-        <li><a class="dropdown-item text-decoration-underline"><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
+        <li><a class="dropdown-item text-decoration-underline" href="../sistema/logoff.php" ><i class="bi bi-box-arrow-left me-2"></i>Sair</a></li>
       </ul>
     </div>
   </div>
