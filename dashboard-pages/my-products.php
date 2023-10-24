@@ -113,7 +113,7 @@ session_start();
         data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50"
           class="img-shop border-black border rounded-circle me-2" />
-        <strong id="opt-name"><?php echo $_SESSION['name'];?>/strong>
+        <strong id="opt-name"><?php echo $_SESSION['name'];?></strong>
       </a>
 
       <ul class="dropdown-menu text-small shadow">
