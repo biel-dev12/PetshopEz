@@ -52,8 +52,8 @@ include_once('sistema/config/connection.php');
             <a class="nav-link text" href="#">Sobre Nós</a>
           </li>
           <div class="btns flex-column">
-            <button class="btn btn-login link-login">Entrar</button>
-            <button class="btn btn-signup link-register">Cadastre-se</button>
+            <button class="btn btn-login link-login" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Entrar</button>
+            <button class="btn btn-signup link-register" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Cadastre-se</button>
           </div>
         </ul>
       </div>
