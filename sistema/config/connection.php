@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost:3306";
-$username = "root";
-$password = "";
+$username = "ezpets_admin";
+$password = "ezpets@admin";
 $dbname = "ezpets_db";
 
 try {
