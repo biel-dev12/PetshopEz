@@ -1,5 +1,15 @@
 @import "./outhers/colors.scss";
 
+@font-face {
+  font-family: LastEp;
+  src: url(../fonts/last_episode/LastEpisodeDEMO-Regular.otf);
+}
+
+@font-face {
+  font-family: TN;
+  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf);
+}
+
 html,
 body {
   padding: 0;
@@ -7,7 +17,6 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
-
   p,
   h1,
   h2,
@@ -22,7 +31,6 @@ body {
 body {
   height: 100vh;
   background-color: #d9d9d9;
-
   .navbar {
     width: 100%;
 

@@ -64,7 +64,7 @@ include_once('sistema/config/connection.php');
       <div class="form-signup-login card-container show-card">
         <div class="register">
           <form class="form" method="post" action="#">
-            <label aria-hidden="true">Cadastrar Pet Shop</label>
+            <label aria-hidden="true" class="font-lep">Cadastrar Pet Shop</label>
             <p>Sua vida mais easy!</p>
             <input class="input" type="text" id="namec" name="namec" placeholder="Nome">
             <input class="input" type="email" name="emailc" id="emailc" placeholder="E-mail">
@@ -96,7 +96,7 @@ include_once('sistema/config/connection.php');
 
         <div class="login">
           <form class="form" method="post" action="#">
-            <label for="chk" aria-hidden="true">Entrar</label>
+            <label for="chk" aria-hidden="true" class="font-lep">Entrar</label>
             <p>Sua vida mais easy!</p>
             <input class="input" type="email" name="email1" placeholder="E-mail">
             <input class="input" type="password" name="passw" placeholder="Password">

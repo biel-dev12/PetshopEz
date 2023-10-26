@@ -1,4 +1,14 @@
-html, body {
+@font-face {
+  font-family: LastEp;
+  src: url(../fonts/last_episode/LastEpisodeDEMO-Regular.otf);
+}
+@font-face {
+  font-family: TN;
+  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf);
+}
+html,
+body {
+  font-family: TN;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -30,6 +40,11 @@ html, body {
   animation: anim-logo 0.7s;
 }
 
+.font-lep {
+  font-family: LastEp;
+  letter-spacing: 3px;
+}
+
 button {
   outline: none;
 }
@@ -46,421 +61,6 @@ button {
   }
   100% {
     transform: rotate(-4deg);
-  }
-}
-.main-content {
-  grid-template-columns: 100%;
-  gap: 0px 0px;
-  grid-template-rows: 8vh 92vh;
-  grid-template-areas: "header" "main";
-}
-
-#header {
-  width: 100%;
-  grid-area: header;
-  background-color: #fff;
-}
-#header #nav-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #fff;
-  height: 100%;
-  gap: 0px !important;
-  padding: 10px 20px !important;
-}
-#header #nav-header a.link-logo .logo {
-  width: 40%;
-  height: auto;
-}
-#header #nav-header .menu-hamb {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: space-around;
-}
-#header #nav-header .menu-hamb div {
-  width: 100%;
-  height: 2px;
-  background-color: black;
-  transition: all 0.3s;
-}
-#header #nav-header .menu-hamb div.line1.anim {
-  transform: translateY(11px) rotate(-45deg);
-}
-#header #nav-header .menu-hamb div.line2.anim {
-  transition: all 0.2s;
-  width: 0;
-}
-#header #nav-header .menu-hamb div.line3.anim {
-  transform: translateY(-11px) rotate(45deg);
-}
-#header #nav-header #nav-list {
-  position: absolute;
-  top: 8vh;
-  right: 0;
-  width: 100vw;
-  height: 92vh;
-  background-color: #1190CB;
-  transform: translateX(100%);
-  transition: all 0.5s;
-  display: flex;
-  list-style: none !important;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 30px;
-}
-#header #nav-header #nav-list a.li-option {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-#header #nav-header #nav-list a.li-option:hover {
-  opacity: 0.7;
-}
-#header #nav-header #nav-list li.li-drop {
-  height: 3rem;
-  text-align: center;
-}
-#header #nav-header #nav-list li.li-drop span {
-  position: relative;
-  bottom: 31%;
-  height: 100%;
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-#header #nav-header #nav-list li.li-drop span:hover {
-  opacity: 0.7;
-}
-#header #nav-header #nav-list li.li-drop .dropdown {
-  position: relative;
-  margin-top: 10px;
-  z-index: -1;
-  height: 0;
-  user-select: none;
-  width: 18rem;
-  background-color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-z #header #nav-header #nav-list li.li-drop .dropdown:hover {
-  opacity: 1;
-}
-#header #nav-header #nav-list li.li-drop .dropdown.show {
-  z-index: 2;
-  height: 11.5rem;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
-}
-#header #nav-header #nav-list li.li-drop .dropdown .item {
-  padding: 10px 10px;
-  width: 100%;
-  text-align: left;
-  transition: all 0.3s;
-}
-#header #nav-header #nav-list li.li-drop .dropdown .item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-#header #nav-header #nav-list li.li-drop .dropdown .item-title {
-  font-size: 23px;
-  color: #F27649;
-  font-weight: bold;
-  padding-bottom: 5px;
-}
-#header #nav-header #nav-list li.li-drop .dropdown .item-text {
-  color: rgb(71, 71, 71);
-  font-weight: bold;
-}
-#header #nav-header #nav-list.show-nav {
-  transition: all 0.5s;
-  transform: translateX(0%);
-}
-#header #nav-header #nav-list ul#ul-btns {
-  display: flex;
-  list-style: none !important;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-#header #nav-header #nav-list ul#ul-btns li > button {
-  border: none;
-  width: 7rem;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  padding: 5px 0;
-  font-weight: bold;
-  font-size: 16px;
-  color: #fff;
-  transition: all 0.5s;
-  cursor: pointer;
-}
-#header #nav-header #nav-list ul#ul-btns li > button.btn-login {
-  background-color: #1190CB;
-  border-color: #fff;
-  color: #fff;
-}
-#header #nav-header #nav-list ul#ul-btns li > button.btn-login:hover {
-  background-color: #fff;
-  border: 2px solid #fff;
-  color: #1190CB;
-}
-#header #nav-header #nav-list ul#ul-btns li > button.btn-signup {
-  background-color: #F27649;
-}
-#header #nav-header #nav-list ul#ul-btns li > button.btn-signup:hover {
-  background-color: #1190CB;
-  border: 2px solid #F27649;
-  color: #F27649;
-}
-
-#main-section {
-  width: 100%;
-  grid-area: main;
-  background-color: #FDE3A8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
-}
-#main-section .bg-pets {
-  display: none;
-}
-#main-section .form-signup-login {
-  user-select: none;
-  background-color: #F27649;
-  max-width: 90%;
-  height: 95%;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 7px 7px 20px 10px rgba(36, 0, 70, 0.1568627451);
-  transform: translateX(-150%);
-  transition: all 0.5s;
-}
-#main-section .form-signup-login.show-card {
-  transform: translateX(0%);
-}
-#main-section .form-signup-login .register {
-  max-width: 100%;
-  height: 100%;
-  transition: all 0.4s;
-  background-color: #F27649;
-}
-#main-section .form-signup-login .register.remove-register {
-  transform: translateY(-101%);
-}
-#main-section .form-signup-login .register .form {
-  max-width: 100%;
-  height: 100%;
-  transition: all 0.4s;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 14px;
-  padding: 24px;
-}
-#main-section .form-signup-login .register .form label, #main-section .form-signup-login .register .form p {
-  width: 100%;
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-#main-section .form-signup-login .register .form p {
-  font-size: 1.5rem;
-}
-#main-section .form-signup-login .register .form .input {
-  width: 100%;
-  height: 40px;
-  background: rgb(245, 245, 245);
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-}
-#main-section .form-signup-login .register .form button {
-  width: 85%;
-  height: 40px;
-  margin: 12px auto 10%;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 2px solid #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.2s ease-in;
-}
-#main-section .form-signup-login .register .form button.signup {
-  background-color: transparent;
-}
-#main-section .form-signup-login .register .form button.signup:hover {
-  background-color: #fff;
-  color: #F27649;
-}
-#main-section .form-signup-login .register .form button.login {
-  background-color: transparent;
-}
-#main-section .form-signup-login .register .form button.login:hover {
-  background-color: #fff;
-  color: #1190CB;
-}
-#main-section .form-signup-login .register .form button + p {
-  font-size: 1.1rem;
-}
-#main-section .form-signup-login .register .form button + p span.link-login {
-  text-decoration: underline;
-  cursor: pointer;
-}
-#main-section .form-signup-login .register .form button + p span.link-login:hover {
-  opacity: 0.7;
-}
-#main-section .form-signup-login .login {
-  max-width: 100%;
-  height: 100%;
-  transition: all 0.4s;
-  background-color: #1190CB;
-  transform: translateY(101%);
-}
-#main-section .form-signup-login .login.show-login {
-  transform: translateY(-100%);
-}
-#main-section .form-signup-login .login .form {
-  max-width: 100%;
-  height: 100%;
-  transition: all 0.4s;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 14px;
-  padding: 24px;
-}
-#main-section .form-signup-login .login .form label, #main-section .form-signup-login .login .form p {
-  width: 100%;
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
-#main-section .form-signup-login .login .form p {
-  font-size: 1.5rem;
-}
-#main-section .form-signup-login .login .form .input {
-  width: 100%;
-  height: 40px;
-  background: rgb(245, 245, 245);
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-}
-#main-section .form-signup-login .login .form button {
-  width: 85%;
-  height: 40px;
-  margin: 12px auto 10%;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  border: 2px solid #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.2s ease-in;
-}
-#main-section .form-signup-login .login .form button.signup {
-  background-color: transparent;
-}
-#main-section .form-signup-login .login .form button.signup:hover {
-  background-color: #fff;
-  color: #F27649;
-}
-#main-section .form-signup-login .login .form button.login {
-  background-color: transparent;
-}
-#main-section .form-signup-login .login .form button.login:hover {
-  background-color: #fff;
-  color: #1190CB;
-}
-#main-section .form-signup-login .login .form button + p {
-  font-size: 1.1rem;
-}
-#main-section .form-signup-login .login .form button + p span.link-login {
-  text-decoration: underline;
-  cursor: pointer;
-}
-#main-section .form-signup-login .login .form button + p span.link-login:hover {
-  opacity: 0.7;
-}
-#main-section .form-signup-login .login .form .link-signup {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-@media only screen and (min-width: 900px) {
-  .main-content #header {
-    padding: 10px 30px;
-  }
-  .main-content #header #nav-header .menu-hamb {
-    display: none;
-  }
-  .main-content #header #nav-header #nav-list {
-    flex-direction: row;
-    position: static;
-    height: 100%;
-    width: 80%;
-    transform: translateX(0);
-    background-color: transparent;
-    justify-content: space-between;
-  }
-  .main-content #header #nav-header #nav-list a.li-option {
-    color: #000;
-  }
-  .main-content #header #nav-header #nav-list li.li-drop {
-    width: auto;
-    height: 200px;
-    display: grid;
-    grid-template-rows: 0.5fr 3fr;
-    grid-template-areas: "span" "drop";
-    align-self: self-start;
-    margin-top: 2px;
-  }
-  .main-content #header #nav-header #nav-list li.li-drop span {
-    grid-area: span;
-    color: #000;
-  }
-  .main-content #header #nav-header #nav-list li.li-drop .dropdown {
-    grid-area: drop;
-  }
-  .main-content #header #nav-header #nav-list ul#ul-btns {
-    flex-direction: row;
-  }
-  .main-content #header #nav-header #nav-list ul#ul-btns li > button.btn-login:hover {
-    border-color: #1190CB;
-  }
-  .main-content #header #nav-header #nav-list ul#ul-btns li > button.btn-signup:hover {
-    background-color: #fff;
-  }
-  .main-content #main-section {
-    justify-content: space-around;
-    gap: 0;
-    padding-right: 20px;
-  }
-  .main-content #main-section .bg-pets {
-    display: block !important;
-    min-width: 55%;
-    height: 100%;
-    background-image: url("../imgs/bgPets.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
   }
 }
 .main-content2 {
@@ -556,14 +156,14 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
   align-self: self-start;
   color: rgb(255, 0, 0);
 }
-#main-section2 #stepForm .form-step .inps label, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .register .form p, #main-section .form-signup-login .register .form #main-section2 #stepForm .form-step .inps p, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .login .form p, #main-section .form-signup-login .login .form #main-section2 #stepForm .form-step .inps p {
+#main-section2 #stepForm .form-step .inps label, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .login .form p, #div-main .form-content .form-signup-login .login .form #main-section2 #stepForm .form-step .inps p, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .register .form p, #div-main .form-content .form-signup-login .register .form #main-section2 #stepForm .form-step .inps p {
   font-size: 1.3rem;
   width: fit-content;
   cursor: pointer;
   align-self: self-start;
   transition: all 0.5s;
 }
-#main-section2 #stepForm .form-step .inps label::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .register .form p::after, #main-section .form-signup-login .register .form #main-section2 #stepForm .form-step .inps p::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .login .form p::after, #main-section .form-signup-login .login .form #main-section2 #stepForm .form-step .inps p::after {
+#main-section2 #stepForm .form-step .inps label::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .login .form p::after, #div-main .form-content .form-signup-login .login .form #main-section2 #stepForm .form-step .inps p::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .register .form p::after, #div-main .form-content .form-signup-login .register .form #main-section2 #stepForm .form-step .inps p::after {
   content: "";
   display: block;
   width: 0%;
@@ -584,17 +184,17 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
 #main-section2 #stepForm .form-step .inps input.error {
   border: 2px solid rgb(255, 0, 0);
 }
-#main-section2 #stepForm .form-step .inps input.error ~ label, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .register .form input.error ~ p, #main-section .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input.error ~ p, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .login .form input.error ~ p, #main-section .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input.error ~ p {
+#main-section2 #stepForm .form-step .inps input.error ~ label, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .login .form input.error ~ p, #div-main .form-content .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input.error ~ p, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .register .form input.error ~ p, #div-main .form-content .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input.error ~ p {
   color: rgb(255, 0, 0);
   font-weight: 500;
 }
-#main-section2 #stepForm .form-step .inps input.error ~ label::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .register .form input.error ~ p::after, #main-section .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input.error ~ p::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .login .form input.error ~ p::after, #main-section .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input.error ~ p::after {
+#main-section2 #stepForm .form-step .inps input.error ~ label::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .login .form input.error ~ p::after, #div-main .form-content .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input.error ~ p::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .register .form input.error ~ p::after, #div-main .form-content .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input.error ~ p::after {
   background-color: rgb(255, 0, 0);
 }
 #main-section2 #stepForm .form-step .inps input.valid {
   border: 1px solid #1190CB;
 }
-#main-section2 #stepForm .form-step .inps input:focus ~ label::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .register .form input:focus ~ p::after, #main-section .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input:focus ~ p::after, #main-section2 #stepForm .form-step .inps #main-section .form-signup-login .login .form input:focus ~ p::after, #main-section .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input:focus ~ p::after {
+#main-section2 #stepForm .form-step .inps input:focus ~ label::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .login .form input:focus ~ p::after, #div-main .form-content .form-signup-login .login .form #main-section2 #stepForm .form-step .inps input:focus ~ p::after, #main-section2 #stepForm .form-step .inps #div-main .form-content .form-signup-login .register .form input:focus ~ p::after, #div-main .form-content .form-signup-login .register .form #main-section2 #stepForm .form-step .inps input:focus ~ p::after {
   width: 100%;
 }
 #main-section2 #stepForm .form-step .btns-step {
@@ -678,46 +278,279 @@ z #header #nav-header #nav-list li.li-drop .dropdown:hover {
   width: 100vw;
   height: 100vh;
 }
-.content-master #header .navbar {
-  background-color: #fff !important;
+.content-master #header .sidebar-content .header-sidebar {
+  display: flex;
+  justify-content: start;
 }
-.content-master #header .navbar .container-fluid .navbar-brand {
-  width: 10%;
-}
-.content-master #header .navbar .container-fluid .navbar-brand img {
-  width: 100%;
-}
-.content-master #header .navbar .container-fluid .navbar-toggler {
-  transition: all 2s;
+.content-master #header .sidebar-content .header-sidebar .btn-close {
+  font-size: 1.5rem;
   outline: none;
   box-shadow: none;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item {
-  margin: 0 1rem;
+.content-master #header .sidebar-content .navbar-nav {
+  font-size: 1.2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link {
+.content-master #header .sidebar-content .navbar-nav .nav-link {
   box-shadow: none;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text {
-  color: #000 !important;
-  font-weight: bold;
-}
-.content-master #header .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text:hover {
+.content-master #header .sidebar-content .navbar-nav .nav-link:hover {
   opacity: 0.7;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .btns {
+.content-master #header .sidebar-content .navbar-nav .btns {
   display: flex;
   gap: 10px;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .btns button {
+.content-master #header .sidebar-content .navbar-nav .btns button {
+  font-size: 1.1rem;
   color: #fff;
-  font-weight: 500;
+  font-weight: bold;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .btns button.btn-login {
+.content-master #header .sidebar-content .navbar-nav .btns button.btn-login {
   background-color: #F27649;
 }
-.content-master #header .navbar .container-fluid .navbar-collapse .btns button.btn-signup {
+.content-master #header .sidebar-content .navbar-nav .btns button.btn-signup {
   background-color: #1190CB;
+}
+.content-master .navbar {
+  height: 10vh;
+  background-color: #fff !important;
+}
+.content-master .navbar .container-fluid .navbar-brand {
+  width: 12%;
+  margin-right: 3rem;
+  padding-bottom: 0;
+}
+.content-master .navbar .container-fluid .navbar-brand img {
+  width: 100%;
+}
+.content-master .navbar .container-fluid .navbar-toggler {
+  outline: none;
+  box-shadow: none;
+}
+.content-master .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item {
+  margin: 0 1rem;
+}
+.content-master .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link {
+  box-shadow: none;
+}
+.content-master .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text {
+  color: #000 !important;
+  font-weight: bold;
+}
+.content-master .navbar .container-fluid .navbar-collapse .navbar-nav .nav-item .nav-link.text:hover {
+  opacity: 0.7;
+}
+.content-master .navbar .container-fluid .navbar-collapse .btns {
+  display: flex;
+  gap: 10px;
+}
+.content-master .navbar .container-fluid .navbar-collapse .btns button {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: bold;
+}
+.content-master .navbar .container-fluid .navbar-collapse .btns button.btn-login {
+  background-color: #F27649;
+}
+.content-master .navbar .container-fluid .navbar-collapse .btns button.btn-signup {
+  background-color: #1190CB;
+}
+
+#div-main {
+  width: 100vw;
+  height: 90vh;
+  --bs-gutter-x: 0;
+  background-color: #FDE3A8;
+}
+#div-main .bg-pets {
+  height: 100%;
+  background-image: url("../imgs/bgPets.svg");
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center;
+}
+#div-main .form-content {
+  height: 100%;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+}
+#div-main .form-content .form-signup-login {
+  user-select: none;
+  background-color: #F27649;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 7px 7px 20px 10px rgba(36, 0, 70, 0.1568627451);
+  transition: all 0.5s;
+}
+#div-main .form-content .form-signup-login .register {
+  max-width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  background-color: #F27649;
+}
+#div-main .form-content .form-signup-login .register.remove-register {
+  transform: translateY(-100%);
+}
+#div-main .form-content .form-signup-login .register .form {
+  max-width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 14px;
+  padding: 24px;
+}
+#div-main .form-content .form-signup-login .register .form label, #div-main .form-content .form-signup-login .register .form p {
+  width: 100%;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+#div-main .form-content .form-signup-login .register .form p {
+  font-size: 1.5rem;
+}
+#div-main .form-content .form-signup-login .register .form .input {
+  width: 100%;
+  height: 40px;
+  background: rgb(245, 245, 245);
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+#div-main .form-content .form-signup-login .register .form button {
+  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  font-size: 1.2rem;
+  width: 50%;
+}
+#div-main .form-content .form-signup-login .register .form button.signup {
+  background-color: transparent;
+}
+#div-main .form-content .form-signup-login .register .form button.signup:hover {
+  background-color: #fff;
+  color: #F27649;
+}
+#div-main .form-content .form-signup-login .register .form button.login {
+  background-color: transparent;
+}
+#div-main .form-content .form-signup-login .register .form button.login:hover {
+  background-color: #fff;
+  color: #1190CB;
+}
+#div-main .form-content .form-signup-login .register .form button + p {
+  font-size: 1.1rem;
+}
+#div-main .form-content .form-signup-login .register .form button + p span.link-login {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#div-main .form-content .form-signup-login .register .form button + p span.link-login:hover {
+  opacity: 0.7;
+}
+#div-main .form-content .form-signup-login .login {
+  max-width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  background-color: #1190CB;
+  transform: translateY(100%);
+}
+#div-main .form-content .form-signup-login .login.show-login {
+  transform: translateY(-100%);
+}
+#div-main .form-content .form-signup-login .login .form {
+  max-width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 14px;
+  padding: 24px;
+}
+#div-main .form-content .form-signup-login .login .form label, #div-main .form-content .form-signup-login .login .form p {
+  width: 100%;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+#div-main .form-content .form-signup-login .login .form p {
+  font-size: 1.5rem;
+}
+#div-main .form-content .form-signup-login .login .form .input {
+  width: 100%;
+  height: 40px;
+  background: rgb(245, 245, 245);
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+#div-main .form-content .form-signup-login .login .form button {
+  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  font-size: 1.2rem;
+  width: 50%;
+}
+#div-main .form-content .form-signup-login .login .form button.signup {
+  background-color: transparent;
+}
+#div-main .form-content .form-signup-login .login .form button.signup:hover {
+  background-color: #fff;
+  color: #F27649;
+}
+#div-main .form-content .form-signup-login .login .form button.login {
+  background-color: transparent;
+}
+#div-main .form-content .form-signup-login .login .form button.login:hover {
+  background-color: #fff;
+  color: #1190CB;
+}
+#div-main .form-content .form-signup-login .login .form button + p {
+  font-size: 1.1rem;
+}
+#div-main .form-content .form-signup-login .login .form button + p span.link-login {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#div-main .form-content .form-signup-login .login .form button + p span.link-login:hover {
+  opacity: 0.7;
+}
+#div-main .form-content .form-signup-login .login .form .link-register {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  .content-master #header .navbar .container-fluid .navbar-brand {
+    width: 20%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

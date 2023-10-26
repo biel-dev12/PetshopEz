@@ -25,7 +25,7 @@ include_once('sistema/config/connection.php');
   <div class="main-content2">
     <header id="header">
       <nav id="nav-header2">
-        <a href="./signup.php" class="arrowBac-link">
+        <a href="./index.php" class="arrowBac-link">
           <img src="./imgs/chevron-left.svg" alt="Icone Voltar" class="arrowBack" />
         </a>
         <a href="" class="link-logo">
@@ -222,7 +222,7 @@ include_once('sistema/config/connection.php');
       $stmt->bindParam(':lr_tel', $tel);
       $stmt->execute();
   ?> <script>
-        location.href = "signup.php";
+        location.href = "index.php";
       </script><?php
                 // die("Nao ignore");
               } catch (PDOException $e) {

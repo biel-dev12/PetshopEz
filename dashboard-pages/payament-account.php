@@ -5,7 +5,7 @@ session_start();
   ?>
 
     <script>
-      location.href = "../signup.php";
+      location.href = "../index.php";
     </script>
   <?php
 

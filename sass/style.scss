@@ -1,6 +1,25 @@
-html, body{padding: 0;margin: 0;box-sizing: border-box; overflow-x: hidden; overflow-y: auto}
-
 @import "./outhers/colors.scss";
+
+@font-face {
+  font-family: LastEp;
+  src: url(../fonts/last_episode/LastEpisodeDEMO-Regular.otf);
+}
+
+
+
+@font-face {
+  font-family: TN;
+  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf);
+}
+html,
+body {
+  font-family: TN;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 * {
   margin: 0;
@@ -27,6 +46,11 @@ html, body{padding: 0;margin: 0;box-sizing: border-box; overflow-x: hidden; over
   }
 }
 
+.font-lep{
+  font-family: LastEp;
+  letter-spacing: 3px;
+}
+
 button {
   outline: none;
 }
@@ -46,6 +70,5 @@ button {
   }
 }
 
-@import "./pages/signup-login.scss";
 @import "./pages/companyData.scss";
 @import "./pages/teste.scss";
