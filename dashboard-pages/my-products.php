@@ -131,7 +131,7 @@ session_start();
 
     <!-- Main content -->
     <main class="main-content mt-1">
-      <div class="box-add text-end m-3">
+      <div class="box-add text-end m-3"> 
         <button class="btn" data-bs-toggle="modal" data-bs-target="#ModalAddProd">Adicionar Produto</button>
         <button class="btn" data-bs-toggle="modal" data-bs-target="#AddCateg">Adicionar Categoria</button>
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
