@@ -80,8 +80,6 @@ session_start();
         <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample2">
           <div class="list-group">
             <a href="./my-products.php" class="list-group-item list-group-item-action">Meus Produtos</a>
-            <a href="./addProduct.php" class="list-group-item list-group-item-action">Adicionar Produto</a>
-            <a href="./add-class.php" class="list-group-item list-group-item-action">Adicionar Categoria</a>
           </div>
         </div>
       </li>

@@ -273,6 +273,83 @@ body #opt-name {
 .content-master .main-content {
   height: 90vh;
 }
+.content-master .main-content .box-add button {
+  background-color: #1190CB;
+  color: #fff;
+  font-weight: 500;
+}
+.content-master .main-content .box-add .modal {
+  --bs-modal-width: 60%;
+}
+.content-master .main-content .box-add .modal .modal-body {
+  overflow-x: hidden;
+  background-color: rgb(221, 221, 221);
+}
+.content-master .main-content .box-add .modal .modal-body .form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: left;
+}
+.content-master .main-content .box-add .modal .modal-body .form label {
+  font-weight: bold;
+}
+.content-master .main-content .box-add .modal .modal-body .form input,
+.content-master .main-content .box-add .modal .modal-body .form textarea,
+.content-master .main-content .box-add .modal .modal-body .form select {
+  border: 1px solid #1190CB;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .box-img {
+  width: 30rem;
+  height: 15rem;
+  border: 1px solid;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .box-img img {
+  width: 100%;
+  height: 100%;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas .nm-prod {
+  width: 20rem;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas .cod-prod {
+  width: 10rem;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas .categ-prod {
+  width: 20rem;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas .categ-prod select {
+  cursor: pointer;
+}
+.content-master .main-content .box-add .modal .modal-body .form .header-form .datas .vl-prod {
+  width: 10rem;
+}
+.content-master .main-content .box-add .modal .modal-body .form .modal-footer a.close {
+  border-radius: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+.content-master .main-content .box-add .modal .modal-body .form .modal-footer button {
+  border-radius: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+.content-master .main-content .box-add .modal .modal-body .form .modal-footer button.save {
+  background-color: #1190CB !important;
+}
 .content-master .main-content .card-categs div .card-header {
   display: flex;
   justify-content: space-between;
@@ -314,19 +391,22 @@ body #opt-name {
 .content-master .main-content .card-categs div .card-header .btn-categ.off:hover {
   background-color: #F27649;
 }
-.content-master .main-content .card-categs .collapse .card-body, .content-master .main-content .card-categs .collapsing .card-body {
+.content-master .main-content .card-categs .collapse .card-body,
+.content-master .main-content .card-categs .collapsing .card-body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   gap: 12px;
 }
-.content-master .main-content .card-categs .collapse .card-body .card, .content-master .main-content .card-categs .collapsing .card-body .card {
+.content-master .main-content .card-categs .collapse .card-body .card,
+.content-master .main-content .card-categs .collapsing .card-body .card {
   width: 14rem;
   height: 19rem;
   box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.5);
 }
-.content-master .main-content .card-categs .collapse .card-body .card .edit, .content-master .main-content .card-categs .collapsing .card-body .card .edit {
+.content-master .main-content .card-categs .collapse .card-body .card .edit,
+.content-master .main-content .card-categs .collapsing .card-body .card .edit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,84 +420,110 @@ body #opt-name {
   border-radius: 50%;
   cursor: pointer;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .edit i, .content-master .main-content .card-categs .collapsing .card-body .card .edit i {
+.content-master .main-content .card-categs .collapse .card-body .card .edit i,
+.content-master .main-content .card-categs .collapsing .card-body .card .edit i {
   font-size: 25px;
   transition: all 0.3s;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .edit:hover, .content-master .main-content .card-categs .collapsing .card-body .card .edit:hover {
+.content-master .main-content .card-categs .collapse .card-body .card .edit:hover,
+.content-master .main-content .card-categs .collapsing .card-body .card .edit:hover {
   background-color: #1190cb;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .edit:hover i, .content-master .main-content .card-categs .collapsing .card-body .card .edit:hover i {
+.content-master .main-content .card-categs .collapse .card-body .card .edit:hover i,
+.content-master .main-content .card-categs .collapsing .card-body .card .edit:hover i {
   color: #fff;
   transform: scale(1.1);
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal, .content-master .main-content .card-categs .collapsing .card-body .card .modal {
-  --bs-modal-width: 50%;
+.content-master .main-content .card-categs .collapse .card-body .card .modal,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal {
+  --bs-modal-width: 60%;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body {
   overflow-x: hidden;
   background-color: rgb(221, 221, 221);
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit label, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit label {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit label,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit label {
   font-weight: bold;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit input, .content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit textarea, .content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit select, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit input, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit textarea, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit select {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit input,
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit textarea,
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit select,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit input,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit textarea,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit select {
   border: 1px solid #1190CB;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 8rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img {
   width: 10rem;
   height: 8rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img img, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img img {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .box-img img,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .box-img img {
   border-radius: 12px;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .nm-prod {
   width: 20rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .cod-prod {
   width: 10rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod {
   width: 20rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .categ-prod select {
   cursor: pointer;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-body .form-edit .header-form .datas .vl-prod {
   width: 10rem;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a {
   border-radius: 1rem;
   font-weight: bold;
   color: #fff;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a.save-edit, .content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a.save-edit {
+.content-master .main-content .card-categs .collapse .card-body .card .modal .modal-footer a.save-edit,
+.content-master .main-content .card-categs .collapsing .card-body .card .modal .modal-footer a.save-edit {
   background-color: #1190CB !important;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .card-img-top, .content-master .main-content .card-categs .collapsing .card-body .card .card-img-top {
+.content-master .main-content .card-categs .collapse .card-body .card .card-img-top,
+.content-master .main-content .card-categs .collapsing .card-body .card .card-img-top {
   height: 50%;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .card-text, .content-master .main-content .card-categs .collapsing .card-body .card .infos .card-text {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .card-text,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .card-text {
   font-size: 1.1rem;
   font-weight: 400;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod {
   text-align: center !important;
   width: auto !important;
   cursor: pointer !important;
@@ -431,16 +537,20 @@ body #opt-name {
   outline: none !important;
   z-index: 100;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on {
   background-color: #F27649;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on:hover, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on:hover {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.on:hover,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.on:hover {
   background-color: #1190CB;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off {
   background-color: #1190CB;
 }
-.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off:hover, .content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off:hover {
+.content-master .main-content .card-categs .collapse .card-body .card .infos .btn-prod.off:hover,
+.content-master .main-content .card-categs .collapsing .card-body .card .infos .btn-prod.off:hover {
   background-color: #F27649;
 }
 

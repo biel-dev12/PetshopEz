@@ -11,8 +11,7 @@ session_start();
   <title>Dashboard E-commerce</title>
 
   <!-- Bootstrap5 link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
@@ -22,7 +21,7 @@ session_start();
 
 <body>
 
-<?php
+  <?php
 
   if (!isset($_SESSION['email01'])) {
   ?>
@@ -37,14 +36,11 @@ session_start();
   ?>
 
   <!-- Sidebar Menu-->
-  <div class="sidebar-content offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3" tabindex="-1"
-    id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="sidebar-content offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="header-sidebar p-1 d-flex justify-content-around align-items-center">
-      <span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag"
-          class="bi"></i></span>
-      <span class="name-shop fs-4 justify-self-start"><?php echo $_SESSION['name'];?></span>
-      <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-        aria-controls="offcanvasExample"></button>
+      <span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag" class="bi"></i></span>
+      <span class="name-shop fs-4 justify-self-start"><?php echo $_SESSION['name']; ?></span>
+      <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></button>
     </div>
     <div class="card shop-status-card mt-3">
       <div class="card-body" id="card-txt"></div>
@@ -56,8 +52,7 @@ session_start();
     <hr />
     <ul class="nav flex-column gap-3">
       <li>
-        <a class="nav-link bg-active text-white d-flex align-items-center border rounded-2" data-bs-toggle="collapse"
-          href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+        <a class="nav-link bg-active text-white d-flex align-items-center border rounded-2" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
           <i class="bi bi-clipboard-check me-2 icon-menu"></i> Pedidos
           <i class="bi bi-chevron-right collapse-icon"></i>
         </a>
@@ -69,30 +64,25 @@ session_start();
         </div>
       </li>
       <li>
-        <a class="nav-link d-flex align-items-center border rounded-2" data-bs-toggle="collapse"
-          href="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+        <a class="nav-link d-flex align-items-center border rounded-2" data-bs-toggle="collapse" href="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
           <i class="bi bi-box-seam me-2 icon-menu"></i> Produtos
           <i class="bi bi-chevron-right collapse-icon"></i>
         </a>
         <div class="sub-itens collapse multi-collapse mt-2" id="multiCollapseExample2">
           <div class="list-group">
             <a href="./my-products.php" class="list-group-item list-group-item-action">Meus Produtos</a>
-            <a href="./addProduct.php" class="list-group-item list-group-item-action">Adicionar Produto</a>
-            <a href="./add-class.php" class="list-group-item list-group-item-action">Adicionar Categoria</a>
           </div>
         </div>
       </li>
       <li>
-        <a href="./sales-history.php" class="btn nav-link d-flex align-items-center border rounded-2"
-          aria-expanded="false" role="button">
+        <a href="./sales-history.php" class="btn nav-link d-flex align-items-center border rounded-2" aria-expanded="false" role="button">
           <i class="bi bi-clock-history me-2 icon-menu"></i> Historico de
           vendas
         </a>
       </li>
       <hr class="my-2" />
       <li>
-        <a class="nav-link d-flex align-items-center border rounded-2" data-bs-toggle="collapse"
-          href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4">
+        <a class="nav-link d-flex align-items-center border rounded-2" data-bs-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4">
           <i class="bi bi-gear me-2 icon-menu"></i> Configurações de Pagamento
           <i class="bi bi-chevron-right collapse-icon"></i>
         </a>
@@ -107,11 +97,9 @@ session_start();
     </ul>
     <hr />
     <div class="dropdown">
-      <a class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50"
-          class="img-shop border-black border rounded-circle me-2" />
-        <strong id="opt-name"><?php echo $_SESSION['name'];?></strong>
+      <a class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50" class="img-shop border-black border rounded-circle me-2" />
+        <strong id="opt-name"><?php echo $_SESSION['name']; ?></strong>
       </a>
 
       <ul class="dropdown-menu text-small shadow">
@@ -125,7 +113,7 @@ session_start();
           <hr class="dropdown-divider" />
         </li>
         <li>
-          <a class="dropdown-item text-decoration-underline" href="../sistema/logoff.php" ><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
+          <a class="dropdown-item text-decoration-underline" href="../sistema/logoff.php"><i class="bi bi-box-arrow-left me-2"></i>Sair</a>
         </li>
       </ul>
     </div>
@@ -134,8 +122,7 @@ session_start();
   <div class="content-master">
     <!-- Navbar -->
     <nav class="navbar shadow navbar-dark nav-custom">
-      <button class="btn-hamb navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-        aria-controls="offcanvasExample">
+      <button class="btn-hamb navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="page-name">Meus Produtos</h1>
@@ -144,10 +131,88 @@ session_start();
 
     <!-- Main content -->
     <main class="main-content mt-1">
-      <section class="card-categs px-5 pt-5" id="card-categ1">
+      <div class="box-add text-end m-3">
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#ModalAddProd">Adicionar Produto</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#AddCateg">Adicionar Categoria</button>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal fade" id="ModalAddProd" tabindex="-1" aria-labelledby="ModalAddProd" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="Modal1Title">Novo Produto</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form g-3 needs-validation" novalidate>
+                    <div class="header-form">
+                      <div class="box-img">
+                        <!-- <img src="../imgs/images.jpg" alt="img"> -->
+                      </div>
+                      <div class="datas">
+                        <div class="nm-prod">
+                          <label for="nm-prod" class="form-label">Nome:</label>
+                          <input type="text" class="form-control" id="nm-prod" required>
+                        </div>
+                        <div class="cod-prod">
+                          <label for="cod-prod" class="form-label">Codigo:</label>
+                          <input type="text" class="form-control" id="cod-prod" placeholder="0000">
+                        </div>
+                        <div class="vl-prod">
+                          <label for="vl-prod" class="form-label">Preço:</label>
+                          <div class="input-group">
+                            <span class="input-group-text">R$</span>
+                            <input type="text" class="form-control" id="vl-prod" placeholder="20,00" required>
+                          </div>
+                        </div>
+                        <div class="categ-prod">
+                          <label for="categ" class="form-label">Categoria</label>
+                          <select class="form-select" id="categ" required>
+                            <option value=""></option>
+                            <option value="">Rações</option>
+                            <option>Brinquedos</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box-desc">
+                      <label for="desc-prod" class="form-label">Descrição:</label>
+                      <textarea class="form-control" id="desc-prod"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn save">Salvar</button>
+                      <a class="btn close btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="AddCateg" tabindex="-1" aria-labelledby="AddCategLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="AddCategLabel">Nova Categoria</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="" class="new-categ">
+                <label for="nm-categ">Nome da Categoria</label>
+                <input type="text" name="nm-categ" id="nm-categ">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+      <section class="card-categs px-5 pt-3" id="card-categ1">
         <div class="card">
-          <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample" role="button"
-            aria-expanded="false" aria-controls="collapseExample" id="card-h">
+          <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" id="card-h">
             <a class="nm-categ">Rações </a>
             <a value="on" id="btn-categ" class="btn-categ on">
               Pausar
@@ -188,8 +253,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -201,7 +265,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -215,8 +279,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -256,8 +319,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -269,7 +331,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -283,8 +345,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -324,8 +385,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -337,7 +397,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -351,8 +411,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -392,8 +451,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -405,7 +463,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -419,8 +477,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -460,8 +517,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -473,7 +529,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -487,8 +543,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -500,10 +555,9 @@ session_start();
         </div>
       </section>
 
-      <section class="card-categs p-5" id="card-categ2">
+      <section class="card-categs px-5 pt-3" id="card-categ2">
         <div class="card">
-          <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample2" role="button"
-            aria-expanded="false" aria-controls="collapseExample2" id="card-h">
+          <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" id="card-h">
             <a class="nm-categ">Brinquedos </a>
             <a value="on" id="btn-categ" class="btn-categ on">Pausar</a>
           </div>
@@ -542,8 +596,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -555,7 +608,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -569,8 +622,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -610,8 +662,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -623,7 +674,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -637,8 +688,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -678,8 +728,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -691,7 +740,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -705,8 +754,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -746,8 +794,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -759,7 +806,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -773,8 +820,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -814,8 +860,7 @@ session_start();
                                   <label for="vl-edit-prod" class="form-label">Preço:</label>
                                   <div class="input-group">
                                     <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00"
-                                      required>
+                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
                                   </div>
                                 </div>
                                 <div class="categ-prod">
@@ -827,7 +872,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                            <div class="-box-desc">
+                            <div class="box-desc">
                               <label for="desc-prod" class="form-label">Descrição:</label>
                               <textarea class="form-control" id="desc-prod"></textarea>
                             </div>
@@ -841,8 +886,7 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card"
-                  id="nm-prod1" />
+                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
                 <div class="card-body infos d-flex justify-content-between flex-column">
                   <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
                   <p class="card-text" id="vl-prod1">R$ 150,00</p>
@@ -857,15 +901,10 @@ session_start();
   </div>
 
   <!-- Bootstrap5 script-->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-    integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-    integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 </body>
 
 </html>
