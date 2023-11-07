@@ -126,7 +126,6 @@ include_once('sistema/config/connection.php');
             <?php
 
               }
-                
             }
             ?>
               <p>Já possui uma conta? <span class="link-login">Clique aqui para entrar!</span></p>
@@ -140,8 +139,9 @@ include_once('sistema/config/connection.php');
               <input class="input" type="email" name="email1" placeholder="E-mail">
               <input class="input" type="password" name="passw" placeholder="Password">
               <button class="login">Entrar</button>
-              <?php
-            if (isset($_POST['email1'], $_POST['passw'])) {
+
+<?php
+                if (isset($_POST['email1'], $_POST['passw'])) {
 
               $email = $_POST['email1'];
               $passw = $_POST['passw'];
@@ -154,7 +154,8 @@ include_once('sistema/config/connection.php');
 
 
               $row = $sql->fetch();
-              if ($row > 0) {
+            if ($row > 0) {
+                if ($passw == $row['cd_ps_password']) {
 
                 $_SESSION["email01"] = $email;
                 $_SESSION["name"] = $row["nm_fantasy"];
@@ -163,11 +164,19 @@ include_once('sistema/config/connection.php');
                   location.href = "./dashboard-pages/manager.php";
                 </script>
             <?php
+            
+                 } 
+          
+            } 
+        else {
+        // Usuário não encontrado
+        echo '<div class="alert alert-danger" role="alert">
+        E-mail e/ou senha inválido(s). Por favor, verifique.
+      </div>';
+        }
+                }
+?>
 
-              }
-            }
-
-            ?>
               <p>Já possui uma conta? <span class="link-register">Clique aqui para entrar!</span></p>
             </form>
           </div>
