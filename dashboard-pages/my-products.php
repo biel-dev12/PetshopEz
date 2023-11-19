@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once('../sistema/config/connection.php');
+$idps = $_SESSION['idps'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,7 +10,7 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Dashboard E-commerce</title>
+  <title>Dashboard Marketplace</title>
 
   <!-- Bootstrap5 link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
@@ -143,40 +145,48 @@ session_start();
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form class="form g-3 needs-validation" novalidate>
+                  <form class="form g-3 needs-validation" novalidate action="../php/cadprod.php" method="POST" enctype="multipart/form-data">
                     <div class="header-form">
-                      <div class="box-img">
-                        <!-- <img src="../imgs/images.jpg" alt="img"> -->
+                      <div style="width: 30rem;">
+                      <div class="box-img d-flex flex-column" style="width: 100%;">
+                        <img src="" alt="Produto Selecionado" id="imagemPreview">
+                      </div>
+                      <input type="file" name="img" class="align-self-end rounded " accept="image/png, image/jpeg" onchange="showImage(this)">
                       </div>
                       <div class="datas">
                         <div class="nm-prod">
                           <label for="nm-prod" class="form-label">Nome:</label>
-                          <input type="text" class="form-control" id="nm-prod" required>
+                          <input type="text" name="nm_prod" class="form-control" id="nm-prod" required>
                         </div>
                         <div class="cod-prod">
                           <label for="cod-prod" class="form-label">Codigo:</label>
-                          <input type="text" class="form-control" id="cod-prod" placeholder="0000">
+                          <input type="text" class="form-control" id="cod-prod" name="cd_prod" placeholder="0000">
                         </div>
                         <div class="vl-prod">
                           <label for="vl-prod" class="form-label">Preço:</label>
                           <div class="input-group">
                             <span class="input-group-text">R$</span>
-                            <input type="text" class="form-control" id="vl-prod" placeholder="20,00" required>
+                            <input type="text" class="form-control" id="vl-prod" name="vl_prod" placeholder="20,00" required>
                           </div>
                         </div>
                         <div class="categ-prod">
-                          <label for="categ" class="form-label">Categoria</label>
-                          <select class="form-select" id="categ" required>
-                            <option value=""></option>
-                            <option value="">Rações</option>
-                            <option>Brinquedos</option>
-                          </select>
+                            <label for="categ" class="form-label">Categoria</label>
+                            <?php
+                        $sql =  $conn->query("SELECT * FROM tb_class WHERE cd_ps='$idps'");
+                        $categs = $sql;
+                    ?>
+                                <select name="categ" class="form-select" id="categ" required>
+                                    <?php foreach ($categs as $categ) : ?>
+                                            <option value="<?= $categ['id_class'] ?>"> <?= $categ['nm_class'] ?></option><?php endforeach; ?>
+                        </select>
                         </div>
                       </div>
                     </div>
+                    
+                    
                     <div class="box-desc">
                       <label for="desc-prod" class="form-label">Descrição:</label>
-                      <textarea class="form-control" id="desc-prod"></textarea>
+                      <textarea class="form-control" id="desc-prod" name="ds_prod"></textarea>
                     </div>
                     <div class="modal-footer">
                       <button type="submit" class="btn save">Salvar</button>
@@ -197,19 +207,59 @@ session_start();
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="" class="new-categ">
+              <form action="#" method="POST" class="new-categ">
                 <label for="nm-categ">Nome da Categoria</label>
-                <input type="text" name="nm-categ" id="nm-categ">
+                <input type="text" name="nm-categ" id="nm-categ" class="rounded">
+              <button type="submit" class="btn btn-primary ms-1">Salvar</button>
               </form>
+    <?php
+   
+        if (!empty($_POST)) {
+            $namec = $_POST['nm-categ'];
+            $cdps = $_SESSION['idps'];
+
+            try {
+       
+                $checkStmt = $conn->prepare("SELECT COUNT(*) FROM tb_class WHERE nm_class = :cs_name AND cd_ps = :cd_ps");
+                $checkStmt->bindParam(':cs_name', $namec);
+                $checkStmt->bindParam(':cd_ps', $cdps);
+                $checkStmt->execute();
+                $count = $checkStmt->fetchColumn();
+
+            if ($count > 0) {
+                echo "Categoria já existe. Não é possível cadastrar novamente.";
+            } 
+            else {
+           
+            $Stmt = $conn->prepare("INSERT INTO tb_class(nm_class, cd_ps) VALUES (:cs_name, :cd_ps)");
+            $Stmt->bindParam(':cs_name', $namec);
+            $Stmt->bindParam(':cd_ps', $cdps);
+            $Stmt->execute();
+            echo "
+            <script>
+                alert('Pronto! Categoria Adicionada!')
+                location.href = 'my-products.php';
+            </script>";
+            }
+        } 
+            catch (PDOException $e) {
+                echo "Erro ao cadastrar produto: " . $e->getMessage();
+            } 
+        
+            finally {
+                $conn = null;
+            }
+        }
+
+    ?>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </div>
           </div>
         </div>
     </div>
-
+  
       <section class="card-categs px-5 pt-3" id="card-categ1">
         <div class="card">
           <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" id="card-h">
@@ -894,12 +944,12 @@ session_start();
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
       </section>
     </main>
   </div>
-
+<script src="../js/showImage.js"></script>
   <!-- Bootstrap5 script-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

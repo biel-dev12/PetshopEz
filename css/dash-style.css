@@ -306,8 +306,8 @@ body #opt-name {
   gap: 3rem;
 }
 .content-master .main-content .box-add .modal .modal-body .form .header-form .box-img {
-  width: 30rem;
-  height: 15rem;
+  width: 100%;
+  height: 12rem;
   border: 1px solid;
   border-radius: 12px;
   overflow: hidden;

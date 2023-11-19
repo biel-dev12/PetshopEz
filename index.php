@@ -159,6 +159,7 @@ include_once('sistema/config/connection.php');
 
                 $_SESSION["email01"] = $email;
                 $_SESSION["name"] = $row["nm_fantasy"];
+                $_SESSION["idps"] = $row["id_petshop"];
             ?>
                 <script>
                   location.href = "./dashboard-pages/manager.php";
@@ -198,4 +199,4 @@ include_once('sistema/config/connection.php');
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html>   
