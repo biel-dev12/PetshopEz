@@ -11,7 +11,7 @@ $idps = $_SESSION['idps'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Dashboard Marketplace</title>
-
+  
   <!-- Bootstrap5 link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
 
@@ -133,7 +133,7 @@ $idps = $_SESSION['idps'];
 
     <!-- Main content -->
     <main class="main-content mt-1">
-      <div class="box-add text-end m-3"> 
+      <div class="box-add text-end m-3">
         <button class="btn" data-bs-toggle="modal" data-bs-target="#ModalAddProd">Adicionar Produto</button>
         <button class="btn" data-bs-toggle="modal" data-bs-target="#AddCateg">Adicionar Categoria</button>
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -148,10 +148,10 @@ $idps = $_SESSION['idps'];
                   <form class="form g-3 needs-validation" novalidate action="../php/cadprod.php" method="POST" enctype="multipart/form-data">
                     <div class="header-form">
                       <div style="width: 30rem;">
-                      <div class="box-img d-flex flex-column" style="width: 100%;">
-                        <img src="" alt="Produto Selecionado" id="imagemPreview">
-                      </div>
-                      <input type="file" name="img" class="align-self-end rounded " accept="image/png, image/jpeg" onchange="showImage(this)">
+                        <div class="box-img">
+                          <img src="" alt="Produto Selecionado" id="imagemPreview">
+                        </div>
+                        <input type="file" name="img" class="align-self-end rounded " accept="image/png, image/jpeg" onchange="showImage(this)">
                       </div>
                       <div class="datas">
                         <div class="nm-prod">
@@ -170,20 +170,20 @@ $idps = $_SESSION['idps'];
                           </div>
                         </div>
                         <div class="categ-prod">
-                            <label for="categ" class="form-label">Categoria</label>
-                            <?php
-                        $sql =  $conn->query("SELECT * FROM tb_class WHERE cd_ps='$idps'");
-                        $categs = $sql;
-                    ?>
-                                <select name="categ" class="form-select" id="categ" required>
-                                    <?php foreach ($categs as $categ) : ?>
-                                            <option value="<?= $categ['id_class'] ?>"> <?= $categ['nm_class'] ?></option><?php endforeach; ?>
-                        </select>
+                          <label for="categ" class="form-label">Categoria</label>
+                          <?php
+                          $sql =  $conn->query("SELECT * FROM tb_class WHERE cd_ps='$idps'");
+                          $categs = $sql;
+                          ?>
+                          <select name="categ" class="form-select" id="categ" required>
+                            <?php foreach ($categs as $categ) : ?>
+                              <option value="<?= $categ['id_class'] ?>"> <?= $categ['nm_class'] ?></option><?php endforeach; ?>
+                          </select>
                         </div>
                       </div>
                     </div>
-                    
-                    
+
+
                     <div class="box-desc">
                       <label for="desc-prod" class="form-label">Descrição:</label>
                       <textarea class="form-control" id="desc-prod" name="ds_prod"></textarea>
@@ -207,404 +207,375 @@ $idps = $_SESSION['idps'];
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="#" method="POST" class="new-categ">
+              <form action="../php/cadcateg.php" method="POST" class="new-categ">
                 <label for="nm-categ">Nome da Categoria</label>
                 <input type="text" name="nm-categ" id="nm-categ" class="rounded">
-              <button type="submit" class="btn btn-primary ms-1">Salvar</button>
-              </form>
-    <?php
-   
-        if (!empty($_POST)) {
-            $namec = $_POST['nm-categ'];
-            $cdps = $_SESSION['idps'];
-
-            try {
-       
-                $checkStmt = $conn->prepare("SELECT COUNT(*) FROM tb_class WHERE nm_class = :cs_name AND cd_ps = :cd_ps");
-                $checkStmt->bindParam(':cs_name', $namec);
-                $checkStmt->bindParam(':cd_ps', $cdps);
-                $checkStmt->execute();
-                $count = $checkStmt->fetchColumn();
-
-            if ($count > 0) {
-                echo "Categoria já existe. Não é possível cadastrar novamente.";
-            } 
-            else {
-           
-            $Stmt = $conn->prepare("INSERT INTO tb_class(nm_class, cd_ps) VALUES (:cs_name, :cd_ps)");
-            $Stmt->bindParam(':cs_name', $namec);
-            $Stmt->bindParam(':cd_ps', $cdps);
-            $Stmt->execute();
-            echo "
-            <script>
-                alert('Pronto! Categoria Adicionada!')
-                location.href = 'my-products.php';
-            </script>";
-            }
-        } 
-            catch (PDOException $e) {
-                echo "Erro ao cadastrar produto: " . $e->getMessage();
-            } 
-        
-            finally {
-                $conn = null;
-            }
-        }
-
-    ?>
+                <button type="submit" class="btn btn-primary ms-1">Salvar</button>
+              </form> 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </div>
           </div>
         </div>
-    </div>
-  
-      <section class="card-categs px-5 pt-3" id="card-categ1">
-        <div class="card">
-          <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" id="card-h">
-            <a class="nm-categ">Rações </a>
-            <a value="on" id="btn-categ" class="btn-categ on">
-              Pausar
-            </a>
-          </div>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              <div class="card" id="card-prod1">
-                <!-- Botão para acionar modal -->
-                <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal1">
-                  <i class="bi bi-pencil-square"></i>
-                </div>
+      </div>
 
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="Modal1Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="Modal1Title">Editar Produto</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-edit g-3 needs-validation" novalidate>
-                            <div class="header-form">
-                              <div class="box-img">
-                                <img src="../imgs/images.jpg" alt="img">
+      <?php
+        $sql = $conn->prepare("SELECT * FROM tb_class WHERE cd_ps = :idps");
+        $sql->bindParam(":idps", $idps);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+          // Loop através dos resultados e exibe as categorias
+          while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+              echo ' <section class="card-categs px-5 pt-3" id="card-categ-' . $row["id_class"] . '">
+              <div class="card">
+                <div class="card-header px-4" data-bs-toggle="collapse" href="#collapse-categ-' . $row["id_class"] . '" role="button" aria-expanded="false" aria-controls="collapse-categ-' . $row["id_class"] . '" id="card-h">
+                  <a class="nm-categ">' . $row["nm_class"] . '</a>
+                  <a value="on" id="btn-categ" class="btn-categ on">
+                    Pausar
+                  </a>
+                </div>
+                <div class="collapse" id="collapse-categ-' . $row["id_class"] . '">
+                  <div class="card card-body">
+                    <div class="card" id="card-prod1">
+                      <!-- Botão para acionar modal -->
+                      <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal1">
+                        <i class="bi bi-pencil-square"></i>
+                      </div>
+      
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="Modal1Title" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Modal1Title">Editar Produto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div class="datas">
-                                <div class="nm-prod">
-                                  <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                  <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
-                                </div>
-                                <div class="cod-prod">
-                                  <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                  <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
-                                </div>
-                                <div class="vl-prod">
-                                  <label for="vl-edit-prod" class="form-label">Preço:</label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                              <div class="modal-body">
+                                <form class="form-edit g-3 needs-validation" novalidate>
+                                  <div class="header-form">
+                                    <div class="box-img">
+                                      <img src="../imgs/images.jpg" alt="img">
+                                    </div>
+                                    <div class="datas">
+                                      <div class="nm-prod">
+                                        <label for="nm-edit-prod" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
+                                      </div>
+                                      <div class="cod-prod">
+                                        <label for="cod-edit-prod" class="form-label">Codigo:</label>
+                                        <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
+                                      </div>
+                                      <div class="vl-prod">
+                                        <label for="vl-edit-prod" class="form-label">Preço:</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">R$</span>
+                                          <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                                        </div>
+                                      </div>
+                                      <div class="categ-prod">
+                                        <label for="edit-categ" class="form-label">Categoria</label>
+                                        <select class="form-select" id="edit-categ" required>
+                                          <option selected value="">Rações</option>
+                                          <option>Brinquedos</option>
+                                        </select>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div class="categ-prod">
-                                  <label for="edit-categ" class="form-label">Categoria</label>
-                                  <select class="form-select" id="edit-categ" required>
-                                    <option selected value="">Rações</option>
-                                    <option>Brinquedos</option>
-                                  </select>
-                                </div>
+                                  <div class="box-desc">
+                                    <label for="desc-prod" class="form-label">Descrição:</label>
+                                    <textarea class="form-control" id="desc-prod"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <a href="" class="btn save-edit">Salvar</a>
                               </div>
                             </div>
-                            <div class="box-desc">
-                              <label for="desc-prod" class="form-label">Descrição:</label>
-                              <textarea class="form-control" id="desc-prod"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
+                      <div class="card-body infos d-flex justify-content-between flex-column">
+                        <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
+                        <p class="card-text" id="vl-prod1">R$ 150,00</p>
+                        <a href="#" class="btn-prod on align-self-center">Pausar</a>
+                      </div>
+                    </div>
+                    <div class="card" id="card-prod2">
+                      <!-- Botão para acionar modal -->
+                      <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal2">
+                        <i class="bi bi-pencil-square"></i>
+                      </div>
+      
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="Modal2Title" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Modal2Title">Editar Produto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <form class="form-edit g-3 needs-validation" novalidate>
+                                  <div class="header-form">
+                                    <div class="box-img">
+                                      <img src="../imgs/images.jpg" alt="img">
+                                    </div>
+                                    <div class="datas">
+                                      <div class="nm-prod">
+                                        <label for="nm-edit-prod" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
+                                      </div>
+                                      <div class="cod-prod">
+                                        <label for="cod-edit-prod" class="form-label">Codigo:</label>
+                                        <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
+                                      </div>
+                                      <div class="vl-prod">
+                                        <label for="vl-edit-prod" class="form-label">Preço:</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">R$</span>
+                                          <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                                        </div>
+                                      </div>
+                                      <div class="categ-prod">
+                                        <label for="edit-categ" class="form-label">Categoria</label>
+                                        <select class="form-select" id="edit-categ" required>
+                                          <option selected value="">Rações</option>
+                                          <option>Brinquedos</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="box-desc">
+                                    <label for="desc-prod" class="form-label">Descrição:</label>
+                                    <textarea class="form-control" id="desc-prod"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <a href="" class="btn save-edit">Salvar</a>
+                              </div>
                             </div>
-                          </form>
+                          </div>
                         </div>
-                        <div class="modal-footer">
-                          <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                          <a href="" class="btn save-edit">Salvar</a>
+                      </div>
+                      <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
+                      <div class="card-body infos d-flex justify-content-between flex-column">
+                        <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
+                        <p class="card-text" id="vl-prod1">R$ 150,00</p>
+                        <a href="#" class="btn-prod on align-self-center">Pausar</a>
+                      </div>
+                    </div>
+                    <div class="card" id="card-prod3">
+                      <!-- Botão para acionar modal -->
+                      <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal3">
+                        <i class="bi bi-pencil-square"></i>
+                      </div>
+      
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="Modal3Title" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Modal3Title">Editar Produto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <form class="form-edit g-3 needs-validation" novalidate>
+                                  <div class="header-form">
+                                    <div class="box-img">
+                                      <img src="../imgs/images.jpg" alt="img">
+                                    </div>
+                                    <div class="datas">
+                                      <div class="nm-prod">
+                                        <label for="nm-edit-prod" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
+                                      </div>
+                                      <div class="cod-prod">
+                                        <label for="cod-edit-prod" class="form-label">Codigo:</label>
+                                        <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
+                                      </div>
+                                      <div class="vl-prod">
+                                        <label for="vl-edit-prod" class="form-label">Preço:</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">R$</span>
+                                          <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                                        </div>
+                                      </div>
+                                      <div class="categ-prod">
+                                        <label for="edit-categ" class="form-label">Categoria</label>
+                                        <select class="form-select" id="edit-categ" required>
+                                          <option selected value="">Rações</option>
+                                          <option>Brinquedos</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="box-desc">
+                                    <label for="desc-prod" class="form-label">Descrição:</label>
+                                    <textarea class="form-control" id="desc-prod"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <a href="" class="btn save-edit">Salvar</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                      <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
+                      <div class="card-body infos d-flex justify-content-between flex-column">
+                        <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
+                        <p class="card-text" id="vl-prod1">R$ 150,00</p>
+                        <a href="#" class="btn-prod on align-self-center">Pausar</a>
+                      </div>
+                    </div>
+                    <div class="card" id="card-prod4">
+                      <!-- Botão para acionar modal -->
+                      <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal4">
+                        <i class="bi bi-pencil-square"></i>
+                      </div>
+      
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="Modal4Title" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Modal4Title">Editar Produto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <form class="form-edit g-3 needs-validation" novalidate>
+                                  <div class="header-form">
+                                    <div class="box-img">
+                                      <img src="../imgs/images.jpg" alt="img">
+                                    </div>
+                                    <div class="datas">
+                                      <div class="nm-prod">
+                                        <label for="nm-edit-prod" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
+                                      </div>
+                                      <div class="cod-prod">
+                                        <label for="cod-edit-prod" class="form-label">Codigo:</label>
+                                        <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
+                                      </div>
+                                      <div class="vl-prod">
+                                        <label for="vl-edit-prod" class="form-label">Preço:</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">R$</span>
+                                          <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                                        </div>
+                                      </div>
+                                      <div class="categ-prod">
+                                        <label for="edit-categ" class="form-label">Categoria</label>
+                                        <select class="form-select" id="edit-categ" required>
+                                          <option selected value="">Rações</option>
+                                          <option>Brinquedos</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="box-desc">
+                                    <label for="desc-prod" class="form-label">Descrição:</label>
+                                    <textarea class="form-control" id="desc-prod"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <a href="" class="btn save-edit">Salvar</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
+                      <div class="card-body infos d-flex justify-content-between flex-column">
+                        <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
+                        <p class="card-text" id="vl-prod1">R$ 150,00</p>
+                        <a href="#" class="btn-prod on align-self-center">Pausar</a>
+                      </div>
+                    </div>
+                    <div class="card" id="card-prod5">
+                      <!-- Botão para acionar modal -->
+                      <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal5">
+                        <i class="bi bi-pencil-square"></i>
+                      </div>
+      
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal fade" id="Modal5" tabindex="-1" aria-labelledby="Modal5Title" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Modal5Title">Editar Produto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <form class="form-edit g-3 needs-validation" novalidate>
+                                  <div class="header-form">
+                                    <div class="box-img">
+                                      <img src="../imgs/images.jpg" alt="img">
+                                    </div>
+                                    <div class="datas">
+                                      <div class="nm-prod">
+                                        <label for="nm-edit-prod" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
+                                      </div>
+                                      <div class="cod-prod">
+                                        <label for="cod-edit-prod" class="form-label">Codigo:</label>
+                                        <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
+                                      </div>
+                                      <div class="vl-prod">
+                                        <label for="vl-edit-prod" class="form-label">Preço:</label>
+                                        <div class="input-group">
+                                          <span class="input-group-text">R$</span>
+                                          <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
+                                        </div>
+                                      </div>
+                                      <div class="categ-prod">
+                                        <label for="edit-categ" class="form-label">Categoria</label>
+                                        <select class="form-select" id="edit-categ" required>
+                                          <option selected value="">Rações</option>
+                                          <option>Brinquedos</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="box-desc">
+                                    <label for="desc-prod" class="form-label">Descrição:</label>
+                                    <textarea class="form-control" id="desc-prod"></textarea>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <a href="" class="btn save-edit">Salvar</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
+                      <div class="card-body infos d-flex justify-content-between flex-column">
+                        <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
+                        <p class="card-text" id="vl-prod1">R$ 150,00</p>
+                        <a href="#" class="btn-prod on align-self-center">Pausar</a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
-                <div class="card-body infos d-flex justify-content-between flex-column">
-                  <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
-                  <p class="card-text" id="vl-prod1">R$ 150,00</p>
-                  <a href="#" class="btn-prod on align-self-center">Pausar</a>
-                </div>
               </div>
-              <div class="card" id="card-prod2">
-                <!-- Botão para acionar modal -->
-                <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal2">
-                  <i class="bi bi-pencil-square"></i>
-                </div>
-
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="Modal2Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="Modal2Title">Editar Produto</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-edit g-3 needs-validation" novalidate>
-                            <div class="header-form">
-                              <div class="box-img">
-                                <img src="../imgs/images.jpg" alt="img">
-                              </div>
-                              <div class="datas">
-                                <div class="nm-prod">
-                                  <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                  <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
-                                </div>
-                                <div class="cod-prod">
-                                  <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                  <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
-                                </div>
-                                <div class="vl-prod">
-                                  <label for="vl-edit-prod" class="form-label">Preço:</label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
-                                  </div>
-                                </div>
-                                <div class="categ-prod">
-                                  <label for="edit-categ" class="form-label">Categoria</label>
-                                  <select class="form-select" id="edit-categ" required>
-                                    <option selected value="">Rações</option>
-                                    <option>Brinquedos</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="box-desc">
-                              <label for="desc-prod" class="form-label">Descrição:</label>
-                              <textarea class="form-control" id="desc-prod"></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                          <a href="" class="btn save-edit">Salvar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
-                <div class="card-body infos d-flex justify-content-between flex-column">
-                  <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
-                  <p class="card-text" id="vl-prod1">R$ 150,00</p>
-                  <a href="#" class="btn-prod on align-self-center">Pausar</a>
-                </div>
-              </div>
-              <div class="card" id="card-prod3">
-                <!-- Botão para acionar modal -->
-                <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal3">
-                  <i class="bi bi-pencil-square"></i>
-                </div>
-
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal fade" id="Modal3" tabindex="-1" aria-labelledby="Modal3Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="Modal3Title">Editar Produto</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-edit g-3 needs-validation" novalidate>
-                            <div class="header-form">
-                              <div class="box-img">
-                                <img src="../imgs/images.jpg" alt="img">
-                              </div>
-                              <div class="datas">
-                                <div class="nm-prod">
-                                  <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                  <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
-                                </div>
-                                <div class="cod-prod">
-                                  <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                  <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
-                                </div>
-                                <div class="vl-prod">
-                                  <label for="vl-edit-prod" class="form-label">Preço:</label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
-                                  </div>
-                                </div>
-                                <div class="categ-prod">
-                                  <label for="edit-categ" class="form-label">Categoria</label>
-                                  <select class="form-select" id="edit-categ" required>
-                                    <option selected value="">Rações</option>
-                                    <option>Brinquedos</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="box-desc">
-                              <label for="desc-prod" class="form-label">Descrição:</label>
-                              <textarea class="form-control" id="desc-prod"></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                          <a href="" class="btn save-edit">Salvar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
-                <div class="card-body infos d-flex justify-content-between flex-column">
-                  <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
-                  <p class="card-text" id="vl-prod1">R$ 150,00</p>
-                  <a href="#" class="btn-prod on align-self-center">Pausar</a>
-                </div>
-              </div>
-              <div class="card" id="card-prod4">
-                <!-- Botão para acionar modal -->
-                <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal4">
-                  <i class="bi bi-pencil-square"></i>
-                </div>
-
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal fade" id="Modal4" tabindex="-1" aria-labelledby="Modal4Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="Modal4Title">Editar Produto</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-edit g-3 needs-validation" novalidate>
-                            <div class="header-form">
-                              <div class="box-img">
-                                <img src="../imgs/images.jpg" alt="img">
-                              </div>
-                              <div class="datas">
-                                <div class="nm-prod">
-                                  <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                  <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
-                                </div>
-                                <div class="cod-prod">
-                                  <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                  <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
-                                </div>
-                                <div class="vl-prod">
-                                  <label for="vl-edit-prod" class="form-label">Preço:</label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
-                                  </div>
-                                </div>
-                                <div class="categ-prod">
-                                  <label for="edit-categ" class="form-label">Categoria</label>
-                                  <select class="form-select" id="edit-categ" required>
-                                    <option selected value="">Rações</option>
-                                    <option>Brinquedos</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="box-desc">
-                              <label for="desc-prod" class="form-label">Descrição:</label>
-                              <textarea class="form-control" id="desc-prod"></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                          <a href="" class="btn save-edit">Salvar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
-                <div class="card-body infos d-flex justify-content-between flex-column">
-                  <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
-                  <p class="card-text" id="vl-prod1">R$ 150,00</p>
-                  <a href="#" class="btn-prod on align-self-center">Pausar</a>
-                </div>
-              </div>
-              <div class="card" id="card-prod5">
-                <!-- Botão para acionar modal -->
-                <div class="edit" data-bs-toggle="modal" data-bs-target="#Modal5">
-                  <i class="bi bi-pencil-square"></i>
-                </div>
-
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal fade" id="Modal5" tabindex="-1" aria-labelledby="Modal5Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="Modal5Title">Editar Produto</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form class="form-edit g-3 needs-validation" novalidate>
-                            <div class="header-form">
-                              <div class="box-img">
-                                <img src="../imgs/images.jpg" alt="img">
-                              </div>
-                              <div class="datas">
-                                <div class="nm-prod">
-                                  <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                  <input type="text" class="form-control" id="nm-edit-prod" value="Ração Golden" required>
-                                </div>
-                                <div class="cod-prod">
-                                  <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                  <input type="text" class="form-control" id="cod-edit-prod" placeholder="0000">
-                                </div>
-                                <div class="vl-prod">
-                                  <label for="vl-edit-prod" class="form-label">Preço:</label>
-                                  <div class="input-group">
-                                    <span class="input-group-text">R$</span>
-                                    <input type="text" class="form-control" id="vl-edit-prod" placeholder="20,00" required>
-                                  </div>
-                                </div>
-                                <div class="categ-prod">
-                                  <label for="edit-categ" class="form-label">Categoria</label>
-                                  <select class="form-select" id="edit-categ" required>
-                                    <option selected value="">Rações</option>
-                                    <option>Brinquedos</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="box-desc">
-                              <label for="desc-prod" class="form-label">Descrição:</label>
-                              <textarea class="form-control" id="desc-prod"></textarea>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                          <a href="" class="btn save-edit">Salvar</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <img class="card-img-top border-bottom" src="../imgs/images.jpg" alt="Imagem de capa do card" id="nm-prod1" />
-                <div class="card-body infos d-flex justify-content-between flex-column">
-                  <h5 class="card-title" id="nm-prod1">Ração Golden</h5>
-                  <p class="card-text" id="vl-prod1">R$ 150,00</p>
-                  <a href="#" class="btn-prod on align-self-center">Pausar</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+            </section>';
+          }
+      }
+      ?>
+     
       <section class="card-categs px-5 pt-3" id="card-categ2">
         <div class="card">
           <div class="card-header px-4" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" id="card-h">
@@ -944,12 +915,12 @@ $idps = $_SESSION['idps'];
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
       </section>
     </main>
   </div>
-<script src="../js/showImage.js"></script>
+  <script src="../js/showImage.js"></script>
   <!-- Bootstrap5 script-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
