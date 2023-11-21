@@ -24,7 +24,6 @@ include_once('../dashboard-pages/my-products.php');
                     $Stmt->execute();
                     echo "
             <script>
-                alert('Pronto! Categoria Adicionada!');
                 location.href = '../dashboard-pages/my-products.php';
             </script>";
                   }

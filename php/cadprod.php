@@ -1,6 +1,6 @@
 <?php
 include_once('../sistema/config/connection.php');
-include_once('../dashboard-pages/my-products.php');
+include_once('../dashboard-pages/my-products.php'); 
 //echo $idps;
 
 if(isset($_FILES['img']) && !empty($_POST)){
@@ -45,10 +45,10 @@ if(isset($_FILES['img']) && !empty($_POST)){
     
     echo"
         <script>
-            alert('Cadastro de produto concluída');
             location.href = '../dashboard-pages/my-products.php'
         </script>";
    }
    
    
 ?>
+ 
