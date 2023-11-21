@@ -261,7 +261,7 @@ $idps = $_SESSION['idps'];
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <form class="form-edit g-3 needs-validation" novalidate>
+                                <form class="form-edit g-3 needs-validation" novalidate action="../php/updprod.php" method="POST" enctype="multipart/form-data">
                                   <div class="header-form">
                                     <div style="width: 30rem;">
                                       <div class="box-img">
@@ -269,21 +269,21 @@ $idps = $_SESSION['idps'];
                                         <label for="hidden-input-edit" id="label-hidden-input"><i class="bi bi-plus-circle-fill"></i></label>
                                       </div>
                                     </div>
-                                    <input type="file" name="img" id="hidden-input-edit" class="d-none" accept="image/png, image/jpeg" onchange="showImageEdit(this)">
+                                    <input type="file" name="new-img" id="hidden-input-edit" class="d-none" accept="image/png, image/jpeg" onchange="showImageEdit(this)">
                                     <div class="datas">
                                       <div class="nm-prod">
                                         <label for="nm-edit-prod" class="form-label">Nome:</label>
-                                        <input type="text" class="form-control" id="nm-edit-prod" value="<?php echo $row2['nm_pdc']; ?>" required>
+                                        <input type="text" class="form-control" name="new-nm" id="nm-edit-prod" value="<?php echo $row2['nm_pdc']; ?>" required>
                                       </div>
                                       <div class="cod-prod">
                                         <label for="cod-edit-prod" class="form-label">Codigo:</label>
-                                        <input type="text" class="form-control" id="cod-edit-prod" value="<?php echo $row2['cd_pdc']; ?>">
+                                        <input type="text" class="form-control" name="new-cd" id="cod-edit-prod" value="<?php echo $row2['cd_pdc']; ?>">
                                       </div>
                                       <div class="vl-prod">
                                         <label for="vl-edit-prod" class="form-label">Preço:</label>
                                         <div class="input-group">
                                           <span class="input-group-text">R$</span>
-                                          <input type="text" class="form-control" id="vl-edit-prod" value="<?php echo $row2['vl_pdc']; ?>" required>
+                                          <input type="text" class="form-control" name="new-vl" id="vl-edit-prod" value="<?php echo $row2['vl_pdc']; ?>" required>
                                         </div>
                                       </div>
                                       <div class="categ-prod">
@@ -292,7 +292,7 @@ $idps = $_SESSION['idps'];
                                         $sql3 = $conn->query("SELECT * FROM tb_class WHERE cd_ps='$idps'");
                                         $categs = $sql3->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
-                                        <select name="categ" class="form-select" id="categ" required>
+                                        <select name="new-categ" class="form-select" id="categ" required>
                                           <option selected></option>
                                           <?php foreach ($categs as $categ) : ?>
                                             <option value="<?= $categ['id_class'] ?>"> <?= $categ['nm_class'] ?></option>
@@ -303,16 +303,16 @@ $idps = $_SESSION['idps'];
                                   </div>
                                   <div class="box-desc">
                                     <label for="desc-prod" class="form-label">Descrição:</label>
-                                    <textarea class="form-control" id="desc-prod"><?php echo $row2["ds_pdc"]; ?></textarea>
+                                    <textarea class="form-control" name="new-ds" id="desc-prod"><?php echo $row2["ds_pdc"]; ?></textarea>
                                   </div>
-                                </form>
-
+                                  
                               </div>
                               <div class="modal-footer">
                                 <a href="" class="btn close-edit btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                                <a href="" class="btn save-edit">Salvar</a>
+                                <button type="submit" class="btn btn-primary" style="border-radius: 1rem;">Salvar</a>
                               </div>
                             </div>
+                                </form>
                           </div>
                         </div>
 
