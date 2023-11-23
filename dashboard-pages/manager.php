@@ -1,8 +1,10 @@
 <?php
 session_start();
+include_once('../sistema/config/connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +38,7 @@ session_start();
   <div class="sidebar-content offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="header-sidebar p-1 d-flex justify-content-around align-items-center">
       <span class="status-icon d-flex align-items-center justify-content-center"><i id="status-icon-tag" class="bi"></i></span>
-      <span class="name-shop fs-4 justify-self-start"><?php echo $_SESSION['name'];?></span>
+      <span class="name-shop fs-4 justify-self-start"><?php echo $_SESSION['name']; ?></span>
       <button class="btn-close" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></button>
     </div>
     <div class="card shop-status-card mt-3">
@@ -96,7 +98,7 @@ session_start();
     <div class="dropdown">
       <a class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50" class="img-shop border-black border rounded-circle me-2" />
-        <strong id="opt-name"><?php echo $_SESSION['name'];?></strong>
+        <strong id="opt-name"><?php echo $_SESSION['name']; ?></strong>
       </a>
 
       <ul class="dropdown-menu text-small shadow">
@@ -128,37 +130,11 @@ session_start();
 
     <!-- Main content -->
     <main class="main-content d-flex flex-row justify-content-center mt-1">
-      <!-- Seção de Pedidos Pendentes -->
-      <div class="col-md-4">
-        <div class="card h-100 card-orders-bg">
-          <div class="orders container-fluid rounded" style="max-height: 100vh; overflow-y: auto">
-            <h2 class="text-center pt-2 border-bottom border-dark mb-2">
-              Pedidos Pendentes
-            </h2>
-            <ul class="list-group" id="pending-orders">
-              <section class="card-body card-orders text-white rounded d-flex flex-column" id="order1">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h6 class="card-title num-order">Pedido #22222</h6>
-                  <h6 class="card-title">Status: Pendente</h6>
-                </div>
-                <div class="d-flex justify-content-around mb-1">
-                  <h5 class="card-text border-end pe-3">Cliente: Denilson</h5>
-                  <h5 class="card-text">Hora do Pedido: 11:30</h5>
-                </div>
-                <div class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3" id="buttons-order">
-                  <a class="btn btn-success accept">Aceitar</a>
-                  <a class="btn btn-danger refuse">Recusar</a>
-                  <a class="btn btn-primary delivery">Em Trânsito</a>
-                  <a class="btn btn-success completed">Entregue</a>
-                </div>
-              </section>
-            </ul>
-          </div>
-        </div>
-      </div>
+
+      <?php include_once("../php/getorders.php"); ?>
 
       <!-- Seção de Detalhes do Pedido -->
-      <div class="col-md-8">
+      <!-- <div class="col-md-8">
         <div class="open-orders">
           <h2 class="text-center pt-2 border-bottom border-dark mb-2">
             Detalhes do Pedido
@@ -196,100 +172,13 @@ session_start();
             </section>
           </div>
         </div>
-      </div>
+      </div> -->
     </main>
   </div>
 
   <!-- Bootstrap5 script-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <script src="../js/dashboard.js"></script>
-  <!-- <script>
-      // Função para exibir pedidos pendentes
-      function displayPendingOrders(ordersData) {
-        const pendingOrdersGroup = document.getElementById("pending-orders");
-        pendingOrdersGroup.innerHTML = "";
-
-        ordersData.forEach((order) => {
-          const card = document.createElement("div");
-          card.classList.add("card", "mb-3");
-          card.innerHTML = `
-            <div class="card-body card-orders text-white rounded d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="card-title num-order">Pedido #</h6>
-                    <h6 class="card-title">Status:</h6>
-                </div>
-                <div class="d-flex justify-content-around mb-1">
-                    <h6 class="card-text border-end pe-3">Cliente:</h5>
-                    <h5 class="card-text">Hora do Pedido:</h5>
-                </div>
-                <div class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3"
-                    id="buttons-order-${order.id}">
-                    <button class="btn btn-success">Aceitar</button>
-                    <button class="btn btn-danger">Recusar</button>
-                </div>
-            </div>
-        `;
-          card.addEventListener("click", () => showOrderDetails(order));
-          pendingOrdersGroup.appendChild(card);
-        });
-      }
-
-      // Função para exibir detalhes do pedido selecionado
-      function showOrderDetails(order) {
-        const orderDetails = document.getElementById("order-details");
-        orderDetails.innerHTML = `
-                <h4>Detalhes do Pedido #${order.id}</h4>
-                <p><strong>Cliente:</strong> ${order.customer}</p>
-                <p><strong>Itens:</strong> ${order.items.join(", ")}</p>
-            `;
-      }
-
-      // Função para simular aceitar um pedido
-      function acceptOrder(orderId) {
-        // Implemente a lógica de aceitação do pedido aqui (pode ser no backend)
-        alert(`Pedido #${orderId} aceito`);
-
-        // Remove a div com a classe "buttons-order"
-        const buttonsOrderDiv = document.getElementById(
-          `buttons-order-${orderId}`
-        );
-        if (buttonsOrderDiv) {
-          buttonsOrderDiv.remove();
-        }
-      }
-
-      // Função para simular recusar um pedido
-      function rejectOrder(orderId) {
-        // Implemente a lógica de recusa do pedido aqui (pode ser no backend)
-        alert(`Pedido #${orderId} recusado`);
-        // Remove a div com a classe "buttons-order"
-        const buttonsOrderDiv = document.getElementById(
-          `buttons-order-${orderId}`
-        );
-        if (buttonsOrderDiv) {
-          buttonsOrderDiv.remove();
-        }
-      }
-
-      // Função para buscar dados do servidor e atualizar a lista de pedidos
-      function fetchOrdersFromServer() {
-        fetch("../php/get-orders.php")
-          .then((response) => response.json())
-          .then((data) => {
-            ordersData = data.reverse(); // Inverter a ordem dos pedidos mais recentes primeiro
-            displayPendingOrders(ordersData);
-          })
-          .catch((error) => {
-            console.error("Erro ao buscar dados do servidor:", error);
-          });
-      }
-
-      // Atualizar pedidos do servidor a cada 5 segundos (5000 milissegundos)
-      setInterval(fetchOrdersFromServer, 5000);
-
-      // Chamar a função inicialmente para exibir os pedidos existentes
-      fetchOrdersFromServer();
-    </script> -->
 </body>
 
 </html>

@@ -196,10 +196,10 @@ body #opt-name {
   background-color: rgba(17, 144, 203, 0.9);
   opacity: 0.8;
 }
-.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.delivery {
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.delivery {
   display: none;
 }
-.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.completed {
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.completed {
   display: none;
 }
 .content-master .main-content .open-orders {
@@ -618,10 +618,10 @@ body #opt-name {
   background-color: rgba(17, 144, 203, 0.9);
   opacity: 0.8;
 }
-.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.delivery {
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.delivery {
   display: none;
 }
-.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders #buttons-order a.completed {
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.completed {
   display: none;
 }
 .content-master .main-content .open-orders {

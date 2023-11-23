@@ -12,8 +12,6 @@ try {
 $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//echo "<h1>Conexao estabelecida!</h1>";
-
 }catch(PDOException $e){
     echo "Erro de Conexão: A conexão falhou: ". $e->getMessage();
 }catch(Exception $e){

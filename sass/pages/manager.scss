@@ -35,8 +35,8 @@
                 background-color: rgba($secondary-color, $alpha: 0.9);
                 opacity: .8;
               }
-              #buttons-order{
-                a{
+              form.buttons-order{
+                button{
                   &.delivery{
                     display: none;
                   }
