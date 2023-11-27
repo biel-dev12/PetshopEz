@@ -28,13 +28,17 @@
               cursor: pointer;
               padding: 10px 15px!important;
               background-color: rgba($primary-color, $alpha: 0.85);
-              h6.num-order{
+              h6{
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+              &.num-order{
                 width: fit-content;
                 padding: 5px;
                 border-radius: 10px;
-                background-color: rgba($secondary-color, $alpha: 0.9);
-                opacity: .8;
+                background-color: rgba($secondary-color, $alpha: 1);
+                opacity: .9;
               }
+            }
               form.buttons-order{
                 button{
                   &.delivery{

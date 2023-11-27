@@ -23,14 +23,21 @@ if ($stmt->rowCount() > 0) {
                 </h2>
                 <ul class="list-group" id="pending-orders">
                     <?php
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    while ($rowPending = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         $contOrder++;
                         $stmt2 = $conn->prepare("SELECT * FROM tb_user WHERE id_user = :cd_user");
-                        $stmt2->bindParam(":cd_user", $row["cd_user"]);
+                        $stmt2->bindParam(":cd_user", $rowPending["cd_user"]);
                         $stmt2->execute();
 
                         if ($stmt2->rowCount() > 0) {
                             $user = $stmt2->fetch(PDO::FETCH_ASSOC);
+                            // Armazena informações relevantes sobre o cliente
+                            $userData = array(
+                                'nm_user' => $user["nm_user"],
+                                'id_user' => $user["id_user"]
+                            );
+                            $contPedidosPorCliente[$user["id_user"]] = isset($contPedidosPorCliente[$user["id_user"]]) ? $contPedidosPorCliente[$user["id_user"]] + 1 : 1;
+
                             $stmt3 = $conn->prepare("SELECT * FROM tb_user_address WHERE cd_user_id = :cd_user");
                             $stmt3->bindParam(":cd_user", $user["id_user"]);
                             $stmt3->execute();
@@ -45,16 +52,16 @@ if ($stmt->rowCount() > 0) {
                                     $cepInfo = $stmt4->fetch(PDO::FETCH_ASSOC);
                                     $cep = $cepInfo["cd_user_cep"];
                     ?>
-                                    <li class="card-body card-orders text-white rounded d-flex flex-column my-1" id="order-<?php echo $row["id_order"] ?>" onclick="showOrderDetails(<?php echo $row['id_order']; ?>)">
+                                    <li class="card-body card-orders text-white rounded d-flex flex-column my-1" id="order-<?php echo $rowPending["id_order"] ?>" onclick="showOrderDetails(<?php echo $rowPending['id_order']; ?>)">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <h6 class="card-title num-order">Pedido #<?php echo $contOrder; ?></h6>
-                                            <h6 class="card-title">Status: <?php echo $row["ds_status"]; ?></h6>
+                                            <h6 class="card-title">Status: <?php echo $rowPending["ds_status"]; ?></h6>
                                         </div>
                                         <div class="d-flex justify-content-around mb-2">
                                             <h5 class="card-text border-end pe-3">Cliente: <?php echo $user["nm_user"]; ?></h5>
-                                            <h5 class="card-text">Hora do Pedido: <?php echo substr($row["hr_order"], 0, 5); ?></h5>
+                                            <h5 class="card-text">Hora do Pedido: <?php echo substr($rowPending["hr_order"], 0, 5); ?></h5>
                                         </div>
-                                        <form class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3" id="buttons-order-<?php echo $row["id_order"]; ?>">
+                                        <form class="buttons-order d-flex justify-content-center align-items-center border-top pt-2 gap-3" id="buttons-order-<?php echo $rowPending["id_order"]; ?>">
                                             <button class="btn btn-success accept">Aceitar</button>
                                             <button class="btn btn-danger refuse">Recusar</button>
                                             <button class="btn btn-primary delivery d-none">Em Trânsito</button>
@@ -83,15 +90,15 @@ if ($stmt->rowCount() > 0) {
                 // Reset do statement para o mesmo conjunto de resultados
                 $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                while ($rowDetails = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     // Restante do código para exibir detalhes do pedido
                 ?>
-                    <section class="desc-order" id="desc-order-<?php echo $row['id_order'] ?>" style="display: none;">
+                    <section class="desc-order" id="desc-order-<?php echo $rowDetails['id_order'] ?>" style="display: none;">
                         <div class="alert alert-dark" role="alert">
                             <div>
                                 <p>Pedido #<?php echo $contOrder ?> - </p>
-                                <p>Hora do Pedido: <?php echo substr($row["hr_order"], 0, 5); ?> - </p>
-                                <p>Status: <?php echo $row["ds_status"]; ?></p>
+                                <p>Hora do Pedido: <?php echo substr($rowDetails["hr_order"], 0, 5); ?> - </p>
+                                <p>Status: <?php echo $rowDetails["ds_status"]; ?></p>
                             </div>
                             <a href=""><i class="bi bi-whatsapp"></i></a>
                         </div>
@@ -110,7 +117,7 @@ if ($stmt->rowCount() > 0) {
                             <?php
                             // Select items
                             $stmt5 = $conn->prepare("SELECT * FROM tb_item WHERE cd_order = :cd_order");
-                            $stmt5->bindParam(":cd_order", $row['id_order']);
+                            $stmt5->bindParam(":cd_order", $rowDetails['id_order']);
                             $stmt5->execute();
 
                             ?>
@@ -129,19 +136,19 @@ if ($stmt->rowCount() > 0) {
                                 ?>
                                                 <div class="card-body px-4 py-0 mb-4" style="font-size: 1.2rem;">
                                                     <p class="border-bottom"><span class="me-2"><?php echo $row5["qt_item"] . " x "; ?></span><?php echo $produto["nm_pdc"]; ?> - <span class="vl-item"><?php echo "R$ " . $produto["vl_pdc"]; ?></span>
-                                                        <!-- <hr> -->
-                                                    </p>
+                                                </p>
+                                                <!-- <hr> -->
                                                 </div>
                                 <?php       }
                                         }
                                     }
                                 } ?>
-                                 <div class="card-footer">
-                                            <p>Subtotal: <span>R$ 170,00</span></p>
-                                            <p>Taxa de Entrega: <span>R$ 4,00</span></p>
-                                            <p>Total: <span class="total-order">R$ 174,00</span></p>
-                                            <p>Observaçôes: <span class="obs-order"></span></p>
-                                        </div>
+                                <div class="card-footer">
+                                    <p>Subtotal: <span>R$ 170,00</span></p>
+                                    <p>Taxa de Entrega: <span>R$ 4,00</span></p>
+                                    <p>Total: <span class="total-order">R$ 174,00</span></p>
+                                    <p>Observaçôes: <span class="obs-order"></span></p>
+                                </div>
                             </div>
                     </section>
                 <?php } ?>

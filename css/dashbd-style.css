@@ -189,12 +189,16 @@ body #opt-name {
   padding: 10px 15px !important;
   background-color: rgba(242, 118, 73, 0.85);
 }
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders h6 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
 .content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders h6.num-order {
   width: fit-content;
   padding: 5px;
   border-radius: 10px;
-  background-color: rgba(17, 144, 203, 0.9);
-  opacity: 0.8;
+  background-color: #1190cb;
+  opacity: 0.9;
 }
 .content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.delivery {
   display: none;
@@ -611,12 +615,16 @@ body #opt-name {
   padding: 10px 15px !important;
   background-color: rgba(242, 118, 73, 0.85);
 }
+.content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders h6 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
 .content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders h6.num-order {
   width: fit-content;
   padding: 5px;
   border-radius: 10px;
-  background-color: rgba(17, 144, 203, 0.9);
-  opacity: 0.8;
+  background-color: #1190cb;
+  opacity: 0.9;
 }
 .content-master .main-content .card-orders-bg .orders ul#pending-orders .card-orders form.buttons-order button.delivery {
   display: none;
@@ -902,4 +910,4 @@ body {
   font-family: TN;
 }
 
-/*# sourceMappingURL=dashb-style.css.map */
+/*# sourceMappingURL=dashbd-style.css.map */

@@ -17,7 +17,7 @@ include_once('../sistema/config/connection.php');
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="shortcut icon" href="../imgs/favicon-cropped.svg" type="image/x-icon" />
-  <link rel="stylesheet" href="../css/dashb-style.css" />
+  <link rel="stylesheet" href="../css/dashbd-style.css" />
 </head>
 
 <body>
@@ -131,7 +131,7 @@ include_once('../sistema/config/connection.php');
     <!-- Main content -->
     <main class="main-content d-flex flex-row justify-content-center mt-1">
 
-      <?php include_once("../php/getorders.php"); ?>
+      <?php include_once("../php/testeo.php"); ?>
 
       <!-- Seção de Detalhes do Pedido -->
       <!-- <div class="col-md-8">
@@ -154,12 +154,11 @@ include_once('../sistema/config/connection.php');
                 <p class="">Endereço: <span class="dt-info"> José Bonifácio, 555 - Tude Bastos</span></p>
                 <p>Complemento: <span class="dt-info"> Apto 2</span></p>
                 <div class="card card-itens">
-                  <h5 class="card-header">Itens do Pedido</h5>
-                  <div class="card-body">
-                    <p>1x Pacote de Ração Golden - <span class="vl-item">R$ 150,00</span>
-                      <hr>
-                    </p>
+                <h5 class="card-header mb-3">Itens do Pedido</h5>
+                <div class="card-body px-4 py-0 mb-4" style="font-size: 1.2rem;">
+                </p>
                     <p>2x Brinquedo - <span class="vl-item">R$ 20,00</span></p>
+                <hr>
                   </div>
                   <div class="card-footer">
                     <p>Subtotal: <span>R$ 170,00</span></p>
