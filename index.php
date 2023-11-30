@@ -146,7 +146,7 @@ include_once('sistema/config/connection.php');
               $email = $_POST['email1'];
               $passw = $_POST['passw'];
 
-              $sql = $conn->query("SELECT id_petshop, nm_fantasy, nm_ps_email, cd_ps_password
+              $sql = $conn->query("SELECT id_petshop, img_ps, nm_fantasy, nm_ps_email, cd_ps_password
         FROM tb_petshop WHERE nm_ps_email='$email' AND cd_ps_password='$passw'");
 
 

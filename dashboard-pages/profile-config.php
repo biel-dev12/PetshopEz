@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include_once('../sistema/config/connection.php');
 
 
@@ -16,6 +18,9 @@ try {
     $email = $row['nm_ps_email'];
     $telefone = $row['cd_ps_tel'];
     $_SESSION['img_ps'] = $row['img_ps'];
+    $inithr = $row['hr_working_init'];
+    $endhr = $row['hr_end_working'];
+
 
   } else {
     echo "Nenhum resultado encontrado para o e-mail informado.";
@@ -44,7 +49,7 @@ $_SESSION['cep'] = $cep;
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="shortcut icon" href="../imgs/favicon-cropped.svg" type="image/x-icon" />
-  <link rel="stylesheet" href="../css/dashbd-style.css" />
+  <link rel="stylesheet" href="../css/dash-style.css" />
 </head>
 
 
@@ -192,14 +197,28 @@ $_SESSION['cep'] = $cep;
     ?>
 
 
+<?php
 
+$sql=$conn->prepare("SELECT img_ps FROM tb_petshop WHERE id_petshop = :idps");
+$stmt->bindParam(':idps', $idps);
+$stmt->execute();
+
+if($stmt->rowCount() > 0 ){
+  $row = $stmt->fetch();
+  
+  $imgps = $row['img_ps'];
+
+}
+
+
+?>
 
 
     <!--Foto e nome da loja-->
     <div class="container-main d-block">
       <div class="img-profile d-flex flex-column text-center p-3">
         <div>
-        <img src=" " width="300" height="300" class="img-shop border-black border rounded-circle mx-auto" />
+        <img src='../php/<?php echo $imgps ?>' width="300" height="300" class="img-shop border-black border rounded-circle mx-auto" />
         <button class="icon bi bi-pencil-square rounded-pill border" data-bs-toggle="modal" data-bs-target="#ModalImg"></button>
         </div>
 
@@ -221,7 +240,7 @@ $_SESSION['cep'] = $cep;
                       </div>
                       <input type="file" name="img-pf" id="hidden-input" class="d-none" accept="image/png, image/jpeg" onchange="showImage(this)" required>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <input type="submit" class="btn btn-primary" value="Enviar">
               </div>
             </form>
           </div>
@@ -456,26 +475,64 @@ $_SESSION['cep'] = $cep;
 
 
 
-      <?php
+
+
+<h3 class="p-3"> Horário de funcionamento: </h3>
+
+<h3><button type="submit" class=" icon bi bi-pencil-square rounded-pill border" data-bs-toggle="modal" data-bs-target="#JanelaModalHrinit"> </button> <?php echo "Início das atividades: " . $inithr ?> </h3>
+
+<h3><button type="submit" class=" icon bi bi-pencil-square rounded-pill border" data-bs-toggle="modal" data-bs-target="#JanelaModalHrend"> </button> <?php echo "Encerramento das atividades: " . $endhr ?> </h3>
+
+<div id="JanelaModalHrinit" class="modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <form action="#" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Alterar Horário de Funcionamento</h5>
+          <button type="button" class="btn-close btn-danger btn" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+
+        <div class="modal-body">
+          <p>
+          <h4>Horário de início das atividades: <?php echo $inithr ?></h4>
+          </p>
+          <div class="inps">
+          <p>
+          <h4>Alterar para: <input type="time" id="new-init-hr" name="new-init-hr"></h4>
+          </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+ <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verifica se o método da requisição é POST
 
-        if (isset($_POST["new-cep"])) {
-          $newcep = $_POST["new-cep"];
+        if (isset($_POST["new-init-hr"])) {
+          $newinithr = $_POST["new-init-hr"];
 
           if (isset($_SESSION['idps'])) {
             $idps = $_SESSION['idps'];
 
-            $sql = "UPDATE tb_petshop SET cd_ps_cep = :newcep WHERE id_petshop = :idps";
+            $sql = "UPDATE tb_petshop SET hr_working_init = :newinithr WHERE id_petshop = :idps";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':newcep', $newcep);
+            $stmt->bindParam(':newinithr', $newinithr);
             $stmt->bindParam(':idps', $idps);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-              $_SESSION['cep'] = $newcep;
-              echo '<script>alert("Endereço Alterado com Sucesso");</script>';
+              $inithr = $newinithr;
+              echo '<script>alert("Horário de inicio das atividades alterado com Sucesso");</script>';
               echo "<script>
                   location.href = 'profile-config.php';
                 </script>";
@@ -489,9 +546,75 @@ $_SESSION['cep'] = $cep;
 
       ?>
 
-      </span>
+
+
+
+
+
+
+<div id="JanelaModalHrend" class="modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <form action="#" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Alterar Horário de Funcionamento</h5>
+          <button type="button" class="btn-close btn-danger btn" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+
+        <div class="modal-body">
+          <p>
+          <h4>Horário de encerramento das atividades: <?php echo $endhr ?></h4>
+          </p>
+          <div class="inps">
+          <p>
+          <h4>Alterar para: <input type="time" id="new-end-hr" name="new-end-hr"></h4>
+          </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+
     </div>
   </div>
+</div>
+
+ <?php
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica se o método da requisição é POST
+
+        if (isset($_POST["new-end-hr"])) {
+          $newendhr = $_POST["new-end-hr"];
+
+          if (isset($_SESSION['idps'])) {
+            $idps = $_SESSION['idps'];
+
+            $sql = "UPDATE tb_petshop SET hr_end_working = :newendhr WHERE id_petshop = :idps";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':newendhr', $newendhr);
+            $stmt->bindParam(':idps', $idps);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+              $endhr = $newendhr;
+              echo '<script>alert("Horário de término das atividades alterado com Sucesso");</script>';
+              echo "<script>
+                  location.href = 'profile-config.php';
+                </script>";
+            } else {
+            }
+          } else {
+          }
+        } else {
+        }
+      }
+
+      ?>
+
 
 
 
@@ -584,6 +707,8 @@ if (!isset($_SESSION['idps'])) {
     });
   })
 </script>
+
+
 <!--MASCARA DE TELEFONE-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -606,5 +731,5 @@ if (!isset($_SESSION['idps'])) {
       $(this).val(tel);
     });
   });
-</script>´
+</script>
 <script src="../js/showImage.js"></script>

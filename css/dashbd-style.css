@@ -907,7 +907,7 @@ body #opt-name {
   src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROTYROT.ttf);
 }
 body {
-  font-family: TN;
+  font-family: TN, sans-serif;
 }
 
 /*# sourceMappingURL=dashbd-style.css.map */

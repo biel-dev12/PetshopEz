@@ -18,6 +18,7 @@ include_once('../sistema/config/connection.php');
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="shortcut icon" href="../imgs/favicon-cropped.svg" type="image/x-icon" />
   <link rel="stylesheet" href="../css/dashbd-style.css" />
+
 </head>
 
 <body>
@@ -95,6 +96,7 @@ include_once('../sistema/config/connection.php');
       </li>
     </ul>
     <hr />
+    
     <div class="dropdown">
       <a class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../imgs/logo-ezpets.svg" alt="Pet Shop" width="50" height="50" class="img-shop border-black border rounded-circle me-2" />
@@ -131,7 +133,7 @@ include_once('../sistema/config/connection.php');
     <!-- Main content -->
     <main class="main-content d-flex flex-row justify-content-center mt-1">
 
-      <?php include_once("../php/testeo.php"); ?>
+      <?php include_once("../php/getorders.php"); ?>
 
       <!-- Seção de Detalhes do Pedido -->
       <!-- <div class="col-md-8">
