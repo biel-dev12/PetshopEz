@@ -62,7 +62,7 @@ include_once('sistema/config/connection.php');
         <div class="form-step step2">
           <h2>Informações Empresariais</h2>
           <div class="inps">
-            <input type="text" name="cnpj" id="cnpj" onblur="consultarCNPJ(this.value);" />
+            <input type="text" name="cnpj" id="cnpj" onblur="validarCNPJ(this.value);" />
             <label for="cnpj">CNPJ:</label>
           </div>
           <div class="inps">
@@ -188,7 +188,32 @@ include_once('sistema/config/connection.php');
     $corp_name = $_POST['corpName'];
     $fs_name = $_POST['fantasy-name'];
     $cnpj = $_POST['cnpj'];
-
+    /*
+// Validar numero de CNPJ
+function validar_cnpj($cnpj) {
+    // Verificar se foi informado
+  if(empty($cnpj))
+    return false;
+  // Remover caracteres especias
+  $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+  // Verifica se o numero de digitos informados
+  if (strlen($cnpj) != 14)
+    return false;
+      // Verifica se todos os digitos são iguais
+  if (preg_match('/(\d)\1{13}/', $cnpj))
+    return false;
+  $b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    for ($i = 0, $n = 0; $i < 12; $n += $cnpj[$i] * $b[++$i]);
+    if ($cnpj[12] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        return false;
+    }
+    for ($i = 0, $n = 0; $i <= 12; $n += $cnpj[$i] * $b[$i++]);
+    if ($cnpj[13] != ((($n %= 11) < 2) ? 0 : 11 - $n)) {
+        return false;
+    }
+  return true;
+}
+*/
     //step 3
     $cep = $_POST['cep'];
     $street = $_POST['street'];

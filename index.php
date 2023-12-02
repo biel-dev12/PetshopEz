@@ -146,7 +146,7 @@ include_once('sistema/config/connection.php');
               $email = $_POST['email1'];
               $passw = $_POST['passw'];
 
-              $sql = $conn->query("SELECT id_petshop, nm_fantasy, nm_ps_email, cd_ps_password
+              $sql = $conn->query("SELECT id_petshop, img_ps, nm_fantasy, nm_ps_email, cd_ps_password
         FROM tb_petshop WHERE nm_ps_email='$email' AND cd_ps_password='$passw'");
 
 
@@ -159,6 +159,7 @@ include_once('sistema/config/connection.php');
 
                 $_SESSION["email01"] = $email;
                 $_SESSION["name"] = $row["nm_fantasy"];
+                $_SESSION["idps"] = $row["id_petshop"];
             ?>
                 <script>
                   location.href = "./dashboard-pages/manager.php";
@@ -198,4 +199,4 @@ include_once('sistema/config/connection.php');
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html>   

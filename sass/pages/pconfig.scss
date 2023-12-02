@@ -1,0 +1,84 @@
+@import "../outhers/colors.scss";
+.container-main {
+  padding: 5vh;
+}
+
+.img-profile{
+    div{
+    img{
+        position: relative;
+    }
+    button{
+        position: relative;
+        top: 0;
+        right: 0;
+    }}
+}
+
+.box-img {
+    width: 100%;
+    height: 12rem;
+    border: 1px solid;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: $white-text;
+    position: relative;
+    label{
+      z-index: 12;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $primary-color;
+      background-color: rgba(255, 255, 255, 0.8); /* Adicione um fundo branco transparente para melhorar a legibilidade */
+      padding: 0 5px 5px 5px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 3rem;
+    }
+     img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: $secondary-color;
+  color: $white-text;
+  font-size: 1.5rem;
+}
+
+.account-data {
+  padding: 20px;
+  border-bottom: 1px solid grey;
+}
+.container-data {
+  margin: 0 auto;
+  width: 80%;
+  height: fit-content;
+  border: 1px solid grey;
+  border-radius: 5px 5px 5px;
+  padding: 20px;
+  box-shadow: 1px 1px 15px;
+  margin-bottom: 100px;
+}
+
+.modal-header {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.address-form {
+  width: 100%;
+  height: 100%;
+}
+.address-form input {
+  border: 1px solid $secondary-color;
+  border-radius: 10px 10px 10px;
+}
+.address-form input:focus {
+  border: 0.2px solid $secondary-color;
+  box-shadow: 1px 1px 10px aqua;
+}

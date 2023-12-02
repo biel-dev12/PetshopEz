@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: TN;
-  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\,YROT.ttf);
+  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\YROT.ttf);
 }
 
 html,
@@ -54,3 +54,15 @@ body {
 @import "./pages/manager.scss";
 @import "./pages/order-history.scss";
 @import "./pages/my-products.scss";
+@import "./pages/manager.scss";
+@import "./pages/order-history.scss";
+@import "./pages/sidebar.scss"; 
+@import "./pages/pconfig.scss";  
+
+@font-face {
+  font-family: TN;
+  src: url(../fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT\YROT.ttf);
+}
+body {
+  font-family: TN, sans-serif;
+}
